@@ -1,0 +1,19 @@
+# ignore certain files, like a localsettings.py and any sqlite3 db
+
+.DS_Store
+
+# Ignore compiled files
+*.pyc
+
+# local_settings.py is a file with overrides to items in settings.py
+local_settings.py
+
+# Ignore builds, build log
+build/
+build.log
+
+# Ignore Eclipse settings dir
+.settings
+
+# Ignore lockfile for dev builds
+.fastdev.lock
