@@ -1,15 +1,17 @@
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#000');
 
+Titanium.include('oauth/oauth_adapter.js');
 Titanium.include('sunlight/sha1.js');
 Titanium.include('sunlight/config.js');
 
-var db = Ti.Database.install('./scandal_tour.sqlite3','scandal_tour');  
+var db = Titanium.Database.install('scandal_tour.sqlite3','scandal_tour');  
 
 // load scandals
-var rows = db.execute('SELECT * FROM scandals');
-scandals = {}
-while (rows.isValidRow()) {  
+var rows = db.execute('SELECT * FROM scandals;');
+Titanium.API.log('info: rows', rows.rowCount);
+scandals = {};
+while (rows.isValidRow()) {
     scandals[rows.fieldByName('hash')] = {
       tip: rows.fieldByName('tip'),
       place: rows.fieldByName('place'),
@@ -20,13 +22,13 @@ while (rows.isValidRow()) {
       link: rows.fieldByName('link'),
       scandal: rows.fieldByName('scandal'),
       image: rows.fieldByName('image'),
-      visited: false,
+      visited: false
     };
     rows.next();  
 };
 
 // load visited
-rows = db.execute("SELECT * FROM actions WHERE action_type='visit'");
+rows = db.execute("SELECT * FROM actions WHERE action_type='visit';");
 while (rows.isValidRow()) {
     var sh = rows.fieldByName('scandal_hash');
     if (scandals[sh]!==undefined) {
@@ -48,7 +50,7 @@ var map_win = Titanium.UI.createWindow({
     titleid:'map_win_title',
     title: 'Map',
     navBarHidden: true,
-    SUNLIGHT: SUNLIGHT,
+    SUNLIGHT: SUNLIGHT
 });
 var map_tab = Titanium.UI.createTab({  
     icon: 'images/icons/103-map.png',

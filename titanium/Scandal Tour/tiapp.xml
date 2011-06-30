@@ -1,21 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-<id>com.sunlightfoundation.tour</id>
-<name>Scandal Tour</name>
-<version>1.0</version>
-<publisher>thomaslee</publisher>
-<url>http://www.sunlightfoundation.com</url>
-<description>No description provided</description>
-<copyright>2011 by thomaslee</copyright>
-<icon>default_app_logo.png</icon>
-    <persistent-wifi>false</persistent-wifi>
-    <prerendered-icon>false</prerendered-icon>
-    <statusbar-style>default</statusbar-style>
-    <statusbar-hidden>false</statusbar-hidden>
-    <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
-    <analytics>true</analytics>
-<guid>df237b6e-cf37-4c65-b3b8-c8d326fd3bc7</guid>
+	<deployment-targets>
+		<target device="mobileweb">true</target>
+		<target device="iphone">true</target>
+		<target device="ipad">true</target>
+		<target device="blackberry">false</target>
+		<target device="android">true</target>
+	</deployment-targets>
+	<id>com.sunlightfoundation.tour</id>
+	<name>Scandal Tour</name>
+	<version>1.0</version>
+	<publisher>thomaslee</publisher>
+	<url>http://www.sunlightfoundation.com</url>
+	<description>No description provided</description>
+	<copyright>2011 by thomaslee</copyright>
+	<icon>default_app_logo.png</icon>
+	<persistent-wifi>false</persistent-wifi>
+	<prerendered-icon>false</prerendered-icon>
+	<statusbar-style>default</statusbar-style>
+	<statusbar-hidden>false</statusbar-hidden>
+	<fullscreen>false</fullscreen>
+	<navbar-hidden>false</navbar-hidden>
+	<analytics>true</analytics>
+	<guid>df237b6e-cf37-4c65-b3b8-c8d326fd3bc7</guid>
 	<iphone>
 		<orientations device="iphone">
 			<orientation>Ti.UI.PORTRAIT</orientation>
@@ -27,6 +34,7 @@
 			<orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
 		</orientations>
 	</iphone>
+	<property name="ti.android.google.map.api.key.production">ABQIAAAAkEpHXjFNm14XKpW83X-MLRR2BXiXqRH7uRn2geTIYva-j5BtRhR0UKjMVM1VyQyt3za0CNaY-r5iDA</property>
 	<android xmlns:android="http://schemas.android.com/apk/res/android">
 	</android>
 	<modules>

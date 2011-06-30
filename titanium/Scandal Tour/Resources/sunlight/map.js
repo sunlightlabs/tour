@@ -1,6 +1,13 @@
 (function(){
     
     var annotations = new Array();
+	if (typeof Titanium.UI.currentWindow.SUNLIGHT.scandals !== 'undefined') {
+		Ti.API.log('info scandals count',(typeof Titanium.UI.currentWindow.SUNLIGHT.scandals.length));
+		
+	}
+	else {
+		Ti.API.log('info scandals undefined', "scandales undefined");
+	}
     for(var scandal_hash in Titanium.UI.currentWindow.SUNLIGHT.scandals) {
         var scandal = Titanium.UI.currentWindow.SUNLIGHT.scandals[scandal_hash];
         annotations.push(Titanium.Map.createAnnotation({
@@ -28,7 +35,7 @@
         animate:true,
         regionFit:true,
         userLocation:true,
-        annotations: annotations,
+        annotations: annotations
     });
 
     mapview.addEventListener('click',function(evt)
@@ -46,7 +53,7 @@
     			scandal: evt.annotation.scandal,
     			scandal_hash: evt.annotation.scandal_hash,
     			annotation: evt.annotation,
-    			SUNLIGHT: Titanium.UI.currentWindow.SUNLIGHT,
+    			SUNLIGHT: Titanium.UI.currentWindow.SUNLIGHT
     		});
     		Titanium.UI.currentTab.open(win,{animated:true});
         }
