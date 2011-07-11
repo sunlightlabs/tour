@@ -17,3 +17,6 @@ build.log
 
 # Ignore lockfile for dev builds
 .fastdev.lock
+
+# Ignore pysmell files
+PYSMELLTAGS*
