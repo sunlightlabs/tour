@@ -20,3 +20,6 @@ build.log
 
 # Ignore pysmell files
 PYSMELLTAGS*
+
+# Ignore TextMate tmproj
+*.tmproj
