@@ -19,12 +19,18 @@ for row in reader:
         result = us.geocode(row[2])  
     except:
         continue
+    
+    numcol = 5 if len(row) >= 5 else len(row)
+    
+    newrow = [row[r] for r in range(numcol)]
+    for r in range(5-numcol):
+        newrow.append('null')
         
     if result is not None:
         place, (lat, lng) = result
-        while len(row)<max_row_length:
-            row.append('')
-        row.append(lat)
-        row.append(lng)
-        row.append(hashlib.md5("%s%s" % (lat, lng)).hexdigest())
-        writer.writerow(row)
+        # while len(row)<max_row_length:
+        #     row.append('')
+        newrow.append(lat)
+        newrow.append(lng)
+        newrow.append(hashlib.md5("%s%s" % (lat, lng)).hexdigest())
+        writer.writerow(newrow)

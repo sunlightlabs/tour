@@ -8,11 +8,13 @@ for row in reader:
     obj = {}
     for (i,f) in enumerate(row):
         obj[FIELDS[i].lower()] = f.strip()
+        if FIELDS[i].lower() in ('lat', 'lon'):
+            obj[FIELDS[i].lower()] = float(f.strip())
     out.append(obj)
     
-out_dict = {}
-for row in out:
-    out_dict[row['hash']] = row
-    del out_dict[row['hash']]['hash']
+# out_dict = {}
+# for row in out:
+#     out_dict[row['hash']] = row
+#     del out_dict[row['hash']]['hash']
     
-sys.stdout.write(json.dumps(out_dict))
+sys.stdout.write(json.dumps(out))
