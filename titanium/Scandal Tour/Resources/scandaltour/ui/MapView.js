@@ -14,13 +14,24 @@
     st.ui.createMapView = function(_args) {
         Ti.API.log('createMapView', 'createMapView run with _args.region: ' + _args.region);
         
+        var mapViewContainer = Ti.UI.createView({top:0,bottom:0,left:0,right:0});
+        
         Titanium.Geolocation.purpose = 'Find scandals near you!';
         
         var mapView = Ti.Map.createView({
+            bottom: 30,
             region: _args.region,
             userLocation: true,
             regionFit:true,
             mapType: Ti.Map.STANDARD_TYPE
+        });
+        
+        var buttonBar = Ti.UI.createButtonBar({
+            labels:['1', '5', '10'],
+            backgroundColor:'#72AADF',
+            // style: Titanium.UI.iPhone.SystemButtonStyle.BAR,
+            height: 30,
+            bottom: 0
         });
         
         function loadAnnotations() {
@@ -63,6 +74,8 @@
         loadAnnotations();
         getCurrentLocation();
         
-        return mapView;
+        mapViewContainer.add(mapView);
+        mapViewContainer.add(buttonBar);
+        return mapViewContainer;
     };
 }());
