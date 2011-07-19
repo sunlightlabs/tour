@@ -10,13 +10,15 @@
     st.ui.alert = function(/*String*/ _title, /*String*/ _message) {
         Ti.UI.createAlertDialog({
             title:_title, 
-            message:_message
+            message:_message,
+            buttonNames: ['Okay']
         }).show();
     };
 })();
 
 Ti.include(
     '/scandaltour/ui/ApplicationWindow.js',
+    '/scandaltour/ui/ScandalDetailsWindow.js',
     '/scandaltour/ui/MapView.js'
 );
 
