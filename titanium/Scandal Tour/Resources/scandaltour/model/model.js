@@ -18,7 +18,7 @@
         
         //Create a table for this entity type
         var db = Ti.Database.open(st.model.dbname);
-        db.execute('CREATE TABLE IF NOT EXISTS '+_class+' (id INTEGER PRIMARY KEY, json TEXT)');
+        db.execute('CREATE TABLE IF NOT EXISTS '+this._className+' (id INTEGER PRIMARY KEY, json TEXT)');
         db.close();
         
         //save this entity - returns the ID of this entity

@@ -9,7 +9,9 @@ var st = {};
 
 (function() {
     // Application state variables held here
-    st.app = {};
+    st.app = {
+        userLocation: null
+    };
 
     //Extend an object with the properties from another 
     //(thanks Dojo - http://docs.dojocampus.org/dojo/mixin)
@@ -49,7 +51,7 @@ var st = {};
     var locale = Ti.Platform.locale;
     var osname = Ti.Platform.osname;
 
-/*
+    /*
         Branching logic based on locale
     */
     st.locale = function( /*Object*/ map) {
