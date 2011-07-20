@@ -43,8 +43,12 @@
         },
         
         Spinner: {
-            userSpinner: true,
-            visibleItems: 3
+            useSpinner: true,
+            selectionIndicator: true,
+            visibleItems: 3,
+            left:0,
+            right:0,
+            width: 300
         },
         
         stretch: {
