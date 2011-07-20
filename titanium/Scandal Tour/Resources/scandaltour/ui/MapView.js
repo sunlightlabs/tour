@@ -26,14 +26,6 @@
             mapType: Ti.Map.STANDARD_TYPE
         });
         
-        var buttonBar = Ti.UI.createButtonBar({
-            labels:['1', '5', '10'],
-            backgroundColor:'#72AADF',
-            // style: Titanium.UI.iPhone.SystemButtonStyle.BAR,
-            height: 30,
-            bottom: 0
-        });
-        
         function loadAnnotations() {
             Ti.API.log('MapView', "loadAnnotations()");
             var scandals = st.model.list('Scandal');
@@ -100,9 +92,13 @@
         loadAnnotations();
         Ti.API.log('MapView', 'Ti.Geolocation.locationServicesAuthorization: ' + Ti.Geolocation.locationServicesAuthorization);
         getCurrentLocation();            
-        
         mapViewContainer.add(mapView);
-        // mapViewContainer.add(buttonBar);
+        
+        var spinner = st.ui.createSpinner({
+            items: ['0.25', '0.5', '2', '10', '20']
+        });
+        mapViewContainer.add(spinner);
+        
         return mapViewContainer;
     };
 }());
