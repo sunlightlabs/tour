@@ -8,14 +8,13 @@
     st.ui.createScandalDetailsWindow = function(_args) {
         Ti.API.log('createScandalDetailsWindow', 'annotation.data: ' + JSON.stringify(_args.annotation.data));
         var scandal = _args.annotation.data;
-        var annotationWindow = Ti.UI.createWindow({
+        var annotationWindow = Ti.UI.createWindow(st.combine($$.stretch,{
             // modal: true,
             title: scandal.title,
-            backgroundColor: '#FFF',
             navBarHidden: true,
             scandal: scandal,
             scandal_hash: scandal.hash
-        });
+        }));
         
         var tipLabel = Ti.UI.createLabel({
             editable: false,
