@@ -90,15 +90,17 @@
         }
         
         loadAnnotations();
-        Ti.API.log('MapView', 'Ti.Geolocation.locationServicesAuthorization: ' + Ti.Geolocation.locationServicesAuthorization);
         getCurrentLocation();            
         mapViewContainer.add(mapView);
         
         var spinner = st.ui.createSpinner({
             items: ['0.25', '0.5', '2', '10', '20']
         });
+        spinner.addEventListener('change', function(e) {
+            Ti.API.log('MapView', 'Spinner change');
+        });
         mapViewContainer.add(spinner);
-        
+
         return mapViewContainer;
     };
 }());

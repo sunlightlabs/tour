@@ -30,7 +30,10 @@
             height: 25,
             width: 100,
             color: '#000000',
-            backgroundColor: '#FF0000',
+            borderRadius: 0,
+            borderWidth: 1,
+            borderColor: '#787878',
+            backgroundColor: '#AFAFAF',
             font: {
                 fontSize: 18,
                 fontWeight: 'bold'
@@ -38,8 +41,9 @@
         },
         
         ButtonBar: {
-            backgroundColor: '#FF0000',
-            borderRadius: 0
+            backgroundColor: '#AFAFAF',
+            width: Ti.Platform.displayCaps.platformWidth,
+            height: 25
         },
         
         Spinner: {
@@ -48,7 +52,16 @@
             visibleItems: 3,
             left:0,
             right:0,
-            width: 300
+            bottom: 0,
+            width: Ti.Platform.displayCaps.platformWidth
+        },
+        
+        SpinnerColumn: {
+            'font-size': 18
+        },
+        
+        SpinnerRow: {
+            height: 50,
         },
         
         stretch: {

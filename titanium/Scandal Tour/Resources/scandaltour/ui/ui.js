@@ -24,15 +24,16 @@
             android: function() {
                 var view = Ti.UI.createView(st.combine($$.ButtonBar, _args));
                 var numBtns = _args.labels.length;
+                var borderWidth = $$.Button.borderWidth !== 'undefined' ? $$.Button.borderWidth : 0;
+                var btnWidth = Math.floor(view.width/numBtns);
                 for (var i=0; i < numBtns; i++) {
                     Ti.API.log('st.ui.createButtonBar', 'view.width should be: ' + view.width);
-
-                    Ti.API.log('st.ui.createButtonBar', 'button.width should be: ' + (view.width/numBtns));
+                    Ti.API.log('st.ui.createButtonBar', 'button.width should be: ' + btnWidth);
                     var btn = Ti.UI.createButton(st.combine($$.Button, {
                         title: _args.labels[i],
-                        width: view.width/numBtns
+                        width: btnWidth
                     }));
-                    btn.left = i*btn.width + 1;
+                    btn.left = i*btnWidth;
                     view.add(btn);
                 }
                 return view;
@@ -42,13 +43,18 @@
     };
     
     st.ui.createSpinner = function(_args) {
-        var picker = Ti.UI.createPicker(st.combine($$.Spinner, {bottom: 0, width: $$.platformWidth}));
+        var opts = st.combine(st.combine($$.Spinner, _args),{bottom: 0});
+        var picker = Ti.UI.createPicker(opts);
+        var pickerColumn = Ti.UI.createPickerColumn(st.combine($$.SpinnerColumn, {width: $$.Spinner.width}));
+        Ti.API.log('createSpinner', 'opts: ' + JSON.stringify(opts));
         var items = _args.items;
         var rows = [];
         for (var i=0; i < items.length; i++) {
-            rows[i] = Ti.UI.createPickerRow({title: String(items[i])});
-            picker.add(rows[i]);
+            rows[i] = Ti.UI.createPickerRow(st.combine($$.SpinnerRow, {title: String(items[i])}));
         }
+        pickerColumn.rows = rows;
+        picker.add(pickerColumn);
+        picker.setSelectedRow(0,0, false);
         return picker;
     };
 })();
