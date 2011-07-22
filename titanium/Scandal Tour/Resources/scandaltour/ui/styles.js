@@ -10,7 +10,14 @@
         fontFamily: st.os({
             iphone: 'Helvetica Neue',
             android: 'Droid Sans'
-        })
+        }),
+        backgroundGradient: {
+            type:'linear',
+            colors:['#111','#444'],
+            startPoint:{x:0,y:25},
+            endPoint:{x:0,y:50},
+            backFillStart:false
+        }
     };
     
     st.ui.properties = {
@@ -30,10 +37,11 @@
             height: 25,
             width: 100,
             color: '#000000',
-            borderRadius: 0,
-            borderWidth: 1,
+            // borderRadius: 0,
+            // borderWidth: 1,
             borderColor: '#787878',
             backgroundColor: '#AFAFAF',
+            backgroundGradient: st.ui.theme.backgroundGradient,
             font: {
                 fontSize: 18,
                 fontWeight: 'bold'
@@ -42,6 +50,14 @@
         
         ButtonBar: {
             backgroundColor: '#AFAFAF',
+            // backgroundGradient: st.ui.theme.backgroundGradient,
+            width: Ti.Platform.displayCaps.platformWidth,
+            height: 25
+        },
+        
+        ToolBar: {
+            backgroundColor: '#AFAFAF',
+            // backgroundGradient: st.ui.theme.backgroundGradient,
             width: Ti.Platform.displayCaps.platformWidth,
             height: 25
         },
@@ -62,6 +78,7 @@
         
         SpinnerRow: {
             height: 50,
+            textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
         },
         
         stretch: {

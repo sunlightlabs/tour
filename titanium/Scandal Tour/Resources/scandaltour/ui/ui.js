@@ -42,6 +42,10 @@
         return bar;
     };
     
+    st.ui.createToolBar = function(_args) {
+        return Ti.UI.createView(st.combine($$.ToolBar, _args));
+    };
+    
     st.ui.createSpinner = function(_args) {
         var opts = st.combine(st.combine($$.Spinner, _args),{bottom: 0});
         var picker = Ti.UI.createPicker(opts);

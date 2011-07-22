@@ -100,7 +100,16 @@
             Ti.API.log('MapView', 'Spinner change');
         });
         mapViewContainer.add(spinner);
-
+        
+        var toolBar = st.ui.createToolBar(st.combine($$.ToolBar, {top: 0}));
+        var demoBtn = Ti.UI.createButton(st.combine($$.Button, {
+            title: 'Test',
+            left: 0
+        }));
+        toolBar.add(demoBtn);
+        mapViewContainer.add(toolBar);
+        
+        
         return mapViewContainer;
     };
 }());
