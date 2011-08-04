@@ -81,6 +81,16 @@
             textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
         },
         
+        CharacterText: {
+            height: Ti.Platform.displayCaps.platformHeight*0.4,
+            bottom: 0,
+            backgroundColor: '#EFEFEF',
+            color: '#333333',
+            textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+            touchEnabled: false,
+            focusable: false
+        },
+        
         stretch: {
             top:0,bottom:0,left:0,right:0
         }

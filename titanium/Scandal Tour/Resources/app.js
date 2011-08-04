@@ -4,6 +4,7 @@
  * @version $Rev$
  */
 
+Ti.include('/lib/joli/joli.js');
 Ti.include('/scandaltour/scandaltour.js');
 
 st.app.mainWindow = st.ui.createApplicationWindow();
