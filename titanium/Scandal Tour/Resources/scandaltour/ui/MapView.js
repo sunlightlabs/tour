@@ -28,14 +28,14 @@
         
         function loadAnnotations() {
             Ti.API.log('MapView', "loadAnnotations()");
-            var scandals = st.model.list('Scandal');
-            for (var i=0; i < scandals.length; i++) {
+            st.app.scandals = st.model.list('Scandal');
+            for (var i=0; i < st.app.scandals.length; i++) {
                 var annotation = Ti.Map.createAnnotation({
-                    latitude: scandals[i].lat,
-                    longitude: scandals[i].lon,
-                    title: scandals[i].place,
-                    subtitle: scandals[i].address,
-                    data: scandals[i],
+                    latitude: st.app.scandals[i].lat,
+                    longitude: st.app.scandals[i].lon,
+                    title: st.app.scandals[i].place,
+                    subtitle: st.app.scandals[i].address,
+                    data: st.app.scandals[i],
                     pincolor: Ti.Map.ANNOTATION_RED,
                     animate:true,
                     rightButton: st.os({
@@ -71,6 +71,10 @@
                     }
                     else 
                     {
+                        st.app.userLocation = {
+                            lat: e.coords.latitude,
+                            lon: e.coords.longitude
+                        };
                         var userAnnotation = Ti.Map.createAnnotation({
                             latitude: e.coords.latitude,
                             longitude: e.coords.longitude,
@@ -97,7 +101,13 @@
             items: ['0.25', '0.5', '2', '10', '20']
         });
         spinner.addEventListener('change', function(e) {
-            Ti.API.log('MapView', 'Spinner change');
+            Ti.API.log('MapView', 'Spinner change: ' + JSON.stringify(e));
+            if (st.app.milesAway !== e.selectedValue) {
+                st.app.milesAway = e.selectedValue;
+                for (var i=0; i < st.app.scandals.length; i++) {
+                    var distance = st.app.scandals[i].distanceFrom(st.app.userLocation);
+                }
+            }
         });
         mapViewContainer.add(spinner);
         
