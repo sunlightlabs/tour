@@ -10,6 +10,7 @@
     st.ui.createApplicationWindow = function(_args) {
         Ti.API.log('createApplicationWindow', "createApplicationWindow run");
         var win = Ti.UI.createWindow({
+            navBarHidden: true,
             exitOnClose: true
         });
         
