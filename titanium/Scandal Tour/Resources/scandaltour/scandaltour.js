@@ -106,4 +106,4 @@ var st = {};
 })();
 
 //Include additional Tweetanium namespaces
-Ti.include('/scandaltour/ui/ui.js', '/scandaltour/model/model.js', '/scandaltour/config/config.js');
+Ti.include('/scandaltour/control/control.js', '/scandaltour/ui/ui.js', '/scandaltour/model/model.js', '/scandaltour/config/config.js');

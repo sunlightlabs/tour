@@ -4,10 +4,6 @@
  * @version $Rev$
  */
 
-/*
-    TODO Figure out schema for sqlite db where our stuff will be installed from. May use joli.models.initialize() for models that don't already have tables?
-*/
-
 (function() {
     st.model = {
         dbname:'scandal_tour'

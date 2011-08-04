@@ -16,11 +16,6 @@
         
         
         Ti.App.addEventListener('app:db.installed', function(){
-            // var scandals = st.model.list('Scandal');
-            // var testLoc = st.model.Location.newRecord({
-            //                 description: 'Test model'
-            //             });
-            //             testLoc.save();
             var all_locations = st.model.Location.all();
             Ti.API.log('createApplicationWindow', "gathered Locations... " + all_locations.length);            
             st.ui.alert('db install', 'App runs with '  + all_locations.length + ' locations');
@@ -32,7 +27,6 @@
             Ti.API.log('textarea.height', textarea.height);
             
         });
-        st.model.install();
         
         var view1 = Titanium.UI.createView({backgroundColor:'#123'});
         win.add(view1);
