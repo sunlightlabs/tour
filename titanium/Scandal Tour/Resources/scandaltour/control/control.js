@@ -16,6 +16,7 @@
             if not first run and current mission
                 load last view?
         */
+
     }
     
     function loadNewMission() {
@@ -32,9 +33,26 @@
             Ti.API.log('app:db.installed', 'control heard installed');
             startPlaying();
         });
-        st.app.mainWindow = st.ui.createApplicationWindow();
-        st.app.mainWindow.open();
+        if(!st.tests.enabled) {
+            st.app.mainWindow = st.ui.createApplicationWindow();
+            st.app.mainWindow.open();
+        }
         st.model.install();
+    };
+    
+    // Shuffle taken from: 
+    // http://stackoverflow.com/questions/962802/is-it-correct-to-use-javascript-array-sort-method-for-shuffling/962890#962890
+    st.control.shuffle = function (array) {
+        var tmp, current, top = array.length;
+
+        if(top) while(--top) {
+            current = Math.floor(Math.random() * (top + 1));
+            tmp = array[current];
+            array[current] = array[top];
+            array[top] = tmp;
+        }
+
+        return array;
     };
     
 }());

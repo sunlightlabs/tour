@@ -16,6 +16,7 @@
         
         
         Ti.App.addEventListener('app:db.installed', function(){
+/*
             var all_locations = st.model.Location.all();
             Ti.API.log('createApplicationWindow', "gathered Locations... " + all_locations.length);            
             st.ui.alert('db install', 'App runs with '  + all_locations.length + ' locations');
@@ -25,6 +26,7 @@
             view1.add(textarea);
             Ti.API.log('Ti.Platform.displayCaps.platformHeight', Ti.Platform.displayCaps.platformHeight);
             Ti.API.log('textarea.height', textarea.height);
+*/
             
         });
         
