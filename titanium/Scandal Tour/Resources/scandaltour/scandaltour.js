@@ -19,6 +19,9 @@ if (typeof(Number.prototype.toDeg) === "undefined") {
 }
 
 var st = {};
+st.tests = {
+    enabled: false
+};
 
 (function() {
     // Application state variables held here
@@ -105,5 +108,13 @@ var st = {};
     };
 })();
 
-//Include additional Tweetanium namespaces
+Ti.include(
+    '/test/enabled.js'
+);
+
+//Include additional namespaces
 Ti.include('/scandaltour/control/control.js', '/scandaltour/ui/ui.js', '/scandaltour/model/model.js', '/scandaltour/config/config.js');
+
+Ti.include(
+    '/test/tests.js'
+);

@@ -1,0 +1,1 @@
+st.tests.enabled = true;
