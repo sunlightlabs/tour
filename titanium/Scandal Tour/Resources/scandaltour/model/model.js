@@ -23,6 +23,7 @@
 })();
 
 Ti.include(
-    '/scandaltour/model/Location.js'
+    '/scandaltour/model/Location.js',
+    '/scandaltour/model/QuizItem.js'
 );
 
