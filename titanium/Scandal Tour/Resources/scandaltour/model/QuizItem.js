@@ -21,22 +21,20 @@
             }
         },
         objectMethods: {
-            setDistractors: function(distractors) {
-                var json_str = JSON.stringify(distractors);
-                this.distractors = json_str;
+            setDistractors: function(_distractors) {
+                var json_str = JSON.stringify(_distractors);
+                this.set('distractors', json_str);
             },
             getDistractors: function() {
                 var result = JSON.parse(this.distractors);
-                Ti.API.log('QuizItem', 'distractors: ' + this.distractors);
-                Ti.API.log('QuizItem', 'result: ' + result);
                 return result;
             },
             getChoices: function() {
-                var dists = this.distractors ? this.distractors : '[]';
-                var choices = JSON.parse(dists);
+                var dists = JSON.parse(this.distractors);
+                var choices = dists ? dists : [];
                 choices.push(this.answer);
-                choices = st.control.shuffle(choices);
-                return choices;
+                var result = st.control.shuffle(choices);
+                return result;
             }
         }
     });
