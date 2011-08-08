@@ -28,7 +28,7 @@
         
         function loadAnnotations() {
             Ti.API.log('MapView', "loadAnnotations()");
-            st.app.scandals = st.model.list('Scandal');
+            st.app.scandals = st.models.list('Scandal');
             for (var i=0; i < st.app.scandals.length; i++) {
                 var annotation = Ti.Map.createAnnotation({
                     latitude: st.app.scandals[i].lat,

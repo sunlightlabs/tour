@@ -17,7 +17,7 @@
         
         Ti.App.addEventListener('app:db.installed', function(){
 /*
-            var all_locations = st.model.Location.all();
+            var all_locations = st.models.Location.all();
             Ti.API.log('createApplicationWindow', "gathered Locations... " + all_locations.length);            
             st.ui.alert('db install', 'App runs with '  + all_locations.length + ' locations');
             var textarea = Ti.UI.createLabel(st.combine($$.CharacterText, {

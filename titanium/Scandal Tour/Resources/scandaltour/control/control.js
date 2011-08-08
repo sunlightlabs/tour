@@ -37,7 +37,7 @@
             st.app.mainWindow = st.ui.createApplicationWindow();
             st.app.mainWindow.open();
         }
-        st.model.install();
+        st.models.install();
     };
     
     // Shuffle taken from: 

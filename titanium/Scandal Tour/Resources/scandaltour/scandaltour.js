@@ -113,7 +113,7 @@ Ti.include(
 );
 
 //Include additional namespaces
-Ti.include('/scandaltour/control/control.js', '/scandaltour/ui/ui.js', '/scandaltour/model/model.js', '/scandaltour/config/config.js');
+Ti.include('/scandaltour/control/control.js', '/scandaltour/ui/ui.js', '/scandaltour/model/models.js', '/scandaltour/config/config.js');
 
 Ti.include(
     '/test/tests.js'

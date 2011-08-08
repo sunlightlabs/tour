@@ -5,7 +5,7 @@
  */
 
 (function() {
-    st.model.Location = new joli.model({
+    st.models.Location = new joli.model({
         table: 'locations',
         columns: {
             id: 'INTEGER PRIMARY KEY AUTOINCREMENT',

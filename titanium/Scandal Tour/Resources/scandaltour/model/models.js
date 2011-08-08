@@ -5,17 +5,17 @@
  */
 
 (function() {
-    st.model = {
+    st.models = {
         dbname:'scandal_tour'
     };
-    st.model.installed = false;
+    st.models.installed = false;
         
-    st.model.install = function() {
-        var db = Ti.Database.install('/scandaltour/model/scandal_tour.sqlite3', st.model.dbname);
+    st.models.install = function() {
+        var db = Ti.Database.install('/scandaltour/model/scandal_tour.sqlite3', st.models.dbname);
         db.close();
-        joli.connection = new joli.Connection(st.model.dbname);
+        joli.connection = new joli.Connection(st.models.dbname);
         joli.models.initialize();
-        Ti.API.log('st.model.install', 'Install scandal_tour');
+        Ti.API.log('st.models.install', 'Install scandal_tour');
         Ti.App.fireEvent('app:db.installed');
         Ti.App.Properties.setBool('installed', true);
     };
