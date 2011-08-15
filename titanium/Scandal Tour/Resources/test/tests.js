@@ -1,5 +1,9 @@
 (function(){
     if (st.tests.enabled) {
+        var db = Ti.Database.open(st.models.dbname);
+        db.remove();
+        db.close();
+        st.models.install();
         Ti.include('/test/lib/jasmine-1.0.2.js');
         Ti.include('/test/lib/jasmine-titanium.js');
         

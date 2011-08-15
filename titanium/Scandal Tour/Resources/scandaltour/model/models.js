@@ -17,12 +17,12 @@
         joli.models.initialize();
         Ti.API.log('st.models.install', 'Install scandal_tour');
         Ti.App.fireEvent('app:db.installed');
-        Ti.App.Properties.setBool('installed', true);
     };
     
 })();
 
 Ti.include(
+    '/scandaltour/model/Character.js',
     '/scandaltour/model/Location.js',
     '/scandaltour/model/QuizItem.js'
 );

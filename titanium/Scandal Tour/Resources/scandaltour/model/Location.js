@@ -9,11 +9,20 @@
         table: 'locations',
         columns: {
             id: 'INTEGER PRIMARY KEY AUTOINCREMENT',
+            name: 'TEXT',
             description: 'TEXT',
             address: 'TEXT',
             link: 'TEXT',
             latitude: 'FLOAT',
             longitude: 'FLOAT',
+            /**
+                Should be task, source, or reward. 
+                You meet sources at source locations
+                You collect task locations to complete tasks
+                You are rewarded with reward locations
+             */
+            type: 'TEXT', 
+            category: 'TEXT',
             has_visited: 'INTEGER'
         },
         objectMethods: {
