@@ -10,10 +10,12 @@
     st.ui.createApplicationWindow = function(_args) {
         Ti.API.log('createApplicationWindow', "createApplicationWindow run");
         var win = Ti.UI.createWindow({
+            backgroundColor: st.ui.theme.backgroundColor,
+            fullscreen: true,
             navBarHidden: true,
             exitOnClose: true
         });
-        
+        win.orientationModes = [Ti.UI.PORTRAIT];
         
         Ti.App.addEventListener('app:db.installed', function(){
 /*
@@ -30,8 +32,10 @@
             
         });
         
+/*
         var view1 = Titanium.UI.createView({backgroundColor:'#123'});
         win.add(view1);
+*/
         
         // var mapView = st.ui.createMapView(st.config.defaults);
         

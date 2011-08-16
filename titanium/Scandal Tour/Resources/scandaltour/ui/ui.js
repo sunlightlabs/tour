@@ -15,6 +15,40 @@
         }).show();
     };
     
+    st.ui.showView = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
+        var anim = Ti.UI.createAnimation(st.mixin($$.View.In, _args||{}));
+        anim.addEventListener('complete', _callback||function(){});
+        _uiElement.animate(anim);
+        Ti.App.fireEvent('st.ui.showView', {target: _uiElement});
+        return anim;
+    };
+
+    st.ui.hideView = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
+        var anim = Ti.UI.createAnimation(st.mixin($$.View.Out, _args||{}));
+        anim.addEventListener('complete', _callback||function(){});
+        _uiElement.animate(anim);
+        Ti.App.fireEvent('st.ui.hideView', {target: _uiElement});
+        return anim;
+    };
+    
+    st.ui.createLightBox = function(_args) {
+        var root = Ti.UI.createView(st.combine($$.fullscreen, _args||{}));
+        root.height = $$.fullscreen.height;
+        root.width = $$.fullscreen.width;
+
+        Ti.API.log('createLightBox _args', _args);
+        Ti.API.log('createLightBox st.combine($$.fullscreen, _args||{})', st.combine($$.fullscreen, _args||{}));
+        Ti.API.log('createLightBox root.center', root.center);
+
+        var bgView = Ti.UI.createView($$.LightBox.mask);
+        root.add(bgView);
+        
+        root.content = Ti.UI.createView($$.LightBox.overlay);
+        root.add(root.content);
+        
+        return root;
+    };
+    
     st.ui.createButtonBar = function(_args) {
         var bar = st.os({
             iphone: function() {
@@ -67,6 +101,8 @@ Ti.include(
     '/scandaltour/ui/styles.js',
     '/scandaltour/ui/ApplicationWindow.js',
     '/scandaltour/ui/ScandalDetailsWindow.js',
-    '/scandaltour/ui/MapView.js'
+    '/scandaltour/ui/MapView.js',
+    '/scandaltour/ui/QuizView.js',
+    '/scandaltour/ui/FeedbackView.js'
 );
 
