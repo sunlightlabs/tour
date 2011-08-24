@@ -17,7 +17,8 @@
             view.content.add(feedbackLabel);
         }
         view.addEventListener('click', function() {
-            st.ui.hideView(view);
+            Ti.App.fireEvent('st.ui.FeedbackView:feedbackClick');
+            // st.ui.slideOut(view);
         });
         
         return view;

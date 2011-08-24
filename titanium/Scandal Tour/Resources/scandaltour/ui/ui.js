@@ -15,38 +15,52 @@
         }).show();
     };
     
-    st.ui.showView = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
-        var anim = Ti.UI.createAnimation(st.mixin($$.View.In, _args||{}));
+    st.ui.slideIn = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
+        var anim = Ti.UI.createAnimation(st.combine($$.Slide.In, _args||{}));
         anim.addEventListener('complete', _callback||function(){});
         _uiElement.animate(anim);
-        Ti.App.fireEvent('st.ui.showView', {target: _uiElement});
+        Ti.App.fireEvent('st.ui.slideIn', {target: _uiElement});
         return anim;
     };
 
-    st.ui.hideView = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
-        var anim = Ti.UI.createAnimation(st.mixin($$.View.Out, _args||{}));
+    st.ui.slideOut = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
+        var anim = Ti.UI.createAnimation(st.combine($$.Slide.Out, _args||{}));
         anim.addEventListener('complete', _callback||function(){});
         _uiElement.animate(anim);
-        Ti.App.fireEvent('st.ui.hideView', {target: _uiElement});
+        Ti.App.fireEvent('st.ui.slideOut', {target: _uiElement});
+        return anim;
+    };
+    
+    st.ui.fadeIn = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
+        var anim = Ti.UI.createAnimation(st.combine($$.Fade.In, _args||{}));
+        Ti.API.log('st.ui.fadeIn', 'do we die here?');
+        Ti.API.log('st.ui.fadeIn st.combine($$.Fade.In, _args||{})', st.combine($$.Fade.In, _args||{}));
+        anim.addEventListener('complete', _callback||function(){});
+        _uiElement.animate(anim);
+        Ti.App.fireEvent('st.ui.fadeIn', {target: _uiElement});
+        return anim;
+    };
+
+    st.ui.fadeOut = function(/*UIElement*/ _uiElement, /*Object*/ _args, /*Function*/ _callback) {
+        var anim = Ti.UI.createAnimation(st.combine($$.Fade.Out, _args||{}));
+        anim.addEventListener('complete', _callback||function(){});
+        _uiElement.animate(anim);
+        Ti.App.fireEvent('st.ui.fadeOut', {target: _uiElement});
         return anim;
     };
     
     st.ui.createLightBox = function(_args) {
-        var root = Ti.UI.createView(st.combine($$.fullscreen, _args||{}));
-        root.height = $$.fullscreen.height;
-        root.width = $$.fullscreen.width;
-
-        Ti.API.log('createLightBox _args', _args);
-        Ti.API.log('createLightBox st.combine($$.fullscreen, _args||{})', st.combine($$.fullscreen, _args||{}));
-        Ti.API.log('createLightBox root.center', root.center);
+        var lb = Ti.UI.createView(st.combine($$.fullscreen, _args||{}));
+        lb.height = $$.fullscreen.height;
+        lb.width = $$.fullscreen.width;
 
         var bgView = Ti.UI.createView($$.LightBox.mask);
-        root.add(bgView);
+        lb.add(bgView);
         
-        root.content = Ti.UI.createView($$.LightBox.overlay);
-        root.add(root.content);
+        lb.content = Ti.UI.createView($$.LightBox.overlay);
+        lb.add(lb.content);
         
-        return root;
+        return lb;
     };
     
     st.ui.createButtonBar = function(_args) {
@@ -103,6 +117,8 @@ Ti.include(
     '/scandaltour/ui/ScandalDetailsWindow.js',
     '/scandaltour/ui/MapView.js',
     '/scandaltour/ui/QuizView.js',
-    '/scandaltour/ui/FeedbackView.js'
+    '/scandaltour/ui/FeedbackView.js',
+    '/scandaltour/ui/CharacterView.js'
+    
 );
 

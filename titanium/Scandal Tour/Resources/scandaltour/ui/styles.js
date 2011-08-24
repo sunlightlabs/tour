@@ -4,8 +4,8 @@
  * @version $Rev$
  */
 (function() {
-    var platformWidth = Ti.Platform.displayCaps.platformWidth;
-    var platformHeight = Ti.Platform.displayCaps.platformHeight;
+    var platformWidth = (Ti.Platform.displayCaps.platformWidth > Ti.Platform.displayCaps.platformHeight) ? Ti.Platform.displayCaps.platformHeight : Ti.Platform.displayCaps.platformWidth;
+    var platformHeight = (platformWidth === Ti.Platform.displayCaps.platformWidth) ? Ti.Platform.displayCaps.platformHeight : Ti.Platform.displayCaps.platformWidth;
 
     st.ui.theme = {
         textColor: '#000000',
@@ -46,18 +46,15 @@
         },
 
         Button: {
-            height: 25,
-            width: 100,
+            height: 'auto',
+            width: 'auto',
             color: '#000000',
-            // borderRadius: 0,
-            // borderWidth: 1,
-            borderColor: '#787878',
             backgroundColor: '#AFAFAF',
-            backgroundGradient: st.ui.theme.backgroundGradient,
             font: {
                 fontSize: 18,
                 fontWeight: 'bold'
-            }
+            },
+            padding: 6
         },
 
         ButtonBar: {
@@ -77,7 +74,7 @@
         LightBox: {
             mask: {
                 backgroundColor: '#000000',
-                opacity: 0.4
+                opacity: 0.6
             },
             overlay: {
                 backgroundColor: st.ui.theme.backgroundColor,
@@ -129,7 +126,7 @@
             }
         },
 
-        View: {
+        Slide: {
             In: {
                 curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT,
                 center: {
@@ -147,7 +144,83 @@
                 duration: 400
             }
         },
-
+        Fade: {
+            In: {
+                curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT,
+                opacity: 1.0,
+                center: {
+                    x: platformWidth / 2,
+                    y: platformHeight / 2
+                },
+                duration: 750
+            },
+            Out: {
+                curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT,
+                opacity: 0.0,
+                visible: st.os({
+                    android: false,
+                    iphone: true
+                }),
+                center: {
+                    x: platformWidth / 2,
+                    y: platformHeight / 2
+                },
+                duration: 750
+            }
+        },
+        
+        Character: {
+            CharacterImage: {
+                top: 10,
+                left: 10,
+                width: 160,
+                height: 168
+            },
+            NameTag: {
+                Backing: {
+                    bottom: platformHeight*0.4 + 4,
+                    backgroundColor: '#EFEFEF',
+                    left: 10,
+                    padding: 10
+                },
+                Label: {
+                    height: 'auto',
+                    width: 'auto',
+                    font: {
+                        fontSize: 17,
+                        fontWeight: 'bold'
+                    },
+                    color: '#333333',
+                    touchEnabled: false,
+                    focusable: false
+                }
+            },
+            DialogueBox: {
+                bottom: 0,
+                height: platformHeight*0.4,
+                width: platformWidth-20,
+                backgroundColor: '#EFEFEF',
+                contentHeight: 'auto',
+                contentWidth: 'auto',
+                layout: 'vertical',
+                showVerticalScrollIndicator: true,
+                padding: 10
+            },
+            Dialogue: {
+                color: '#333333',
+                width: platformWidth-40,
+                // height: 2000,
+                top: 5,
+                textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+                // touchEnabled: false,
+                // focusable: false,
+                font: {
+                    fontSize: 15,
+                    fontWeight: 'normal'
+                }
+            }
+        },
+        
         Spinner: {
             useSpinner: true,
             selectionIndicator: true,
@@ -165,16 +238,6 @@
         SpinnerRow: {
             height: 50,
             textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
-        },
-
-        CharacterText: {
-            height: platformHeight * 0.4,
-            bottom: 0,
-            backgroundColor: '#EFEFEF',
-            color: '#333333',
-            textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-            touchEnabled: false,
-            focusable: false
         },
 
         stretch: {

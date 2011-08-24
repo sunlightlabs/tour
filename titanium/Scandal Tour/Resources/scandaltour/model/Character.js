@@ -5,16 +5,14 @@
  */
 
 (function () {
-    st.models.Character = function(_options) {
-        this.fname = _options.first_name;
-        this.lname = _options.last_name;
-        this.role = _options.role;
-        this.location = _options.location;
+    st.models.Character = function(_args) {
+        function generateCharacter (_args) {
+            this.characterImage = _args.characterImage;
+            this.characterName = _args.characterName;
+            this.role = _args.role;
+            this.dialogue = _args.dialogue;
+        }
+        return new generateCharacter(_args);
     };
     
-    st.models.Character.prototype = {
-        get name(){
-            return this.fname + ' ' + this.lname;
-        }
-    }
 }());
