@@ -4,11 +4,16 @@ package com.sunlightfoundation.decipherdc.controller
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
+	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	import com.sunlightfoundation.decipherdc.view.CharacterView;
+	import com.sunlightfoundation.decipherdc.view.QuizView;
 	
+	import mx.collections.ArrayCollection;
 	import mx.utils.StringUtil;
 	
 	import org.robotlegs.mvcs.Command;
+	
+	import spark.components.ViewNavigatorApplication;
 	
 	public class StartGameCommand extends Command
 	{
@@ -32,8 +37,22 @@ package com.sunlightfoundation.decipherdc.controller
 			view.data = tempData;
 //			view.image.source = tempData.image;
 //			view.dialogue.text = tempData.dialogue;
+			
+			var quizView:QuizView = new QuizView();
+			
+			var quizItem:QuizItem = new QuizItem();
+			quizItem.question = "Who was the first president of the United States?";
+			quizItem.answers = new ArrayCollection([
+				'Tina Fey',
+				'George Washington',
+				'John Q Public is a name I made up and I want to see how the button expands and how the vertical layout adjusts to longer text.',
+				'Steve McQueen'
+			]);
+			quizView.data = quizItem;
+			
+			ViewNavigatorApplication(contextView).navigator.addElement(quizView);
 
-			dispatch(new CharacterViewEvent(CharacterViewEvent.SHOW, view));			
+//			dispatch(new CharacterViewEvent(CharacterViewEvent.SHOW, view));			
 		}
 	}
 }

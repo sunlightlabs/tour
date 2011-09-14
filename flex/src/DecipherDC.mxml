@@ -8,8 +8,8 @@
 							splashScreenScaleMode="none" 
 							persistNavigatorState="true" xmlns:app1="com.sunlightfoundation.decipherdc.app.*"
 							>
-    <fx:Declarations>
+	<fx:Declarations>
 		<app1:ApplicationContext contextView="{this}" />
-    </fx:Declarations>
-    <fx:Style source="assets/styles/main.css" />
+	</fx:Declarations>
+	<fx:Style source="assets/styles/main.css" />
 </s:ViewNavigatorApplication>
