@@ -1,0 +1,17 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+s|Application, s|View {
+	backgroundColor: #efe1d6;
+}
+
+s|TextArea {
+	fontSize: 13;
+	contentBackgroundAlpha: 0;
+	borderVisible: false;
+}
+
+#characterName {
+	fontSize: 16;
+	fontWeight: bold;
+}

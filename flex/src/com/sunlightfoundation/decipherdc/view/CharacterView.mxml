@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		actionBarVisible="false" tabBarVisible="false" title="CharacterView" data="{data}">
+	<fx:Script>
+		<![CDATA[
+
+		]]>
+	</fx:Script>
+	<s:BitmapImage id="image" left="10" top="10" width="160" height="168" source="{data.image}"/>
+	<s:Label id="characterName" left="10" top="195" text="{data.name}"/>
+	<s:Scroller id="scrollArea" left="10" right="10" top="235" bottom="5" height="240">
+		<s:VGroup id="scrollGroup" width="100%" gap="15">
+			<s:TextArea id="dialogue" width="100%" editable="false" selectable="false" text="{data.dialogue}" paddingLeft="0" paddingRight="5" />
+			<s:Button id="characterAction" label="{data.actionText}"/>
+		</s:VGroup>
+	</s:Scroller>
+</s:View>
