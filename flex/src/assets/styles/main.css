@@ -1,6 +1,10 @@
 /* CSS file */
 @namespace s "library://ns.adobe.com/flex/spark";
 
+@namespace view "com.sunlightfoundation.decipherdc.view.*";
+@namespace comp "com.sunlightfoundation.decipherdc.view.components.*";
+
+
 s|Application, s|View {
 	backgroundColor: #efe1d6;
 }
@@ -14,4 +18,17 @@ s|TextArea {
 #characterName {
 	fontSize: 16;
 	fontWeight: bold;
+}
+
+view|QuizView {
+	backgroundColor: #000;
+	backgroundAlpha: 0.6
+}
+
+view|QuizView #overlay {
+	backgroundColor: #efe1d6;
+}
+
+comp|MultilineButton {
+	fontWeight:normal;
 }

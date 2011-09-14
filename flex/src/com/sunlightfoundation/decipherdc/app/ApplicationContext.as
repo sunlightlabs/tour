@@ -32,6 +32,7 @@ package com.sunlightfoundation.decipherdc.app
           	injector.mapSingleton(LocationListModel);
 			
 			mediatorMap.mapView(CharacterView, CharacterViewMediator);
+			mediatorMap.mapView(QuizView, QuizViewMediator);
             
             dispatchEvent(new ConfigureDatabaseEvent());
         }
