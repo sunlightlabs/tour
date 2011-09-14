@@ -11,9 +11,15 @@ local_settings.py
 # Ignore builds, build log
 build/
 build.log
+bin-debug/*
 
 # Ignore Eclipse settings dir
 .settings
+
+# Ignore flex bits
+.flexProperties
+.actionScriptProperties
+.project
 
 # Ignore lockfile for dev builds
 .fastdev.lock
