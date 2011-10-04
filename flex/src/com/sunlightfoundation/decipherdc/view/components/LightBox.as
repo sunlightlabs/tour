@@ -8,6 +8,7 @@ package com.sunlightfoundation.decipherdc.view.components
 	
 	import spark.components.Group;
 	import spark.components.SkinnableContainer;
+	import spark.effects.Fade;
 	
 	
 	/**
@@ -22,14 +23,24 @@ package com.sunlightfoundation.decipherdc.view.components
 	 */
 	[Event(name="dataChange", type="mx.events.FlexEvent")]
 	
+	
 	public class LightBox extends SkinnableContainer implements IDataRenderer
 	{
 		private var _data:Object;
+		private var fadeIn:Fade;
 		
 		public function LightBox()
 		{
 			super();
 			setStyle("skinClass", LightBoxSkin);
+
+			visible = false;
+			fadeIn = new Fade();
+			fadeIn.alphaFrom = 0.0;
+			fadeIn.alphaTo = 1.0;
+			fadeIn.duration = 1000;
+			fadeIn.target = this;
+			setStyle("creationCompleteEffect", fadeIn);
 		}
 		
 		[Bindable("dataChange")]
@@ -69,6 +80,7 @@ package com.sunlightfoundation.decipherdc.view.components
 			contentGroup.width = this.width - 20;
 			contentGroup.height = this.height - 20;
 			super.updateDisplayList(unscaledWidth, unscaledHeight);
+			
 			
 		}
 		
