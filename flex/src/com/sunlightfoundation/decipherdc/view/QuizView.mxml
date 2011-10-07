@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
-		xmlns:s="library://ns.adobe.com/flex/spark"
-		xmlns:dc="com.sunlightfoundation.decipherdc.view.components.*"
-		xmlns:skins="com.sunlightfoundation.decipherdc.view.skins.*"
-		actionBarVisible="false" data="{data}" tabBarVisible="false" title="QuizView"
-		left="0" top="0" right="0" bottom="0"
-		>
-	<s:layout>
-		<s:BasicLayout/>
-	</s:layout>
-	<fx:Script>
-		<![CDATA[
-			import flexlib.controls.CanvasButton;
-		]]>
-	</fx:Script>
-
-	<s:View id="overlay" left="10" right="10" top="10" bottom="10">
-		<s:Label id="question" left="10" right="10" top="10" text="{data.question}"/>
-		<s:VGroup left="10" right="10" top="105" bottom="10" gap="10" horizontalAlign="center"
-				  requestedRowCount="4" verticalAlign="middle">
-			<dc:MultilineButton width="100%" label="{data.answers.getItemAt(0)}"/>
-			<dc:MultilineButton width="100%" label="{data.answers.getItemAt(1)}"/>
-			<dc:MultilineButton width="100%" label="{data.answers.getItemAt(2)}"/>
-			<dc:MultilineButton width="100%" label="{data.answers.getItemAt(3)}"/>
-		</s:VGroup>
-	</s:View>
-</s:View>
+<components:LightBox xmlns:fx="http://ns.adobe.com/mxml/2009"
+					 xmlns:s="library://ns.adobe.com/flex/spark"
+					 xmlns:components="com.sunlightfoundation.decipherdc.view.components.*"
+					 top="0" left="0" right="0" bottom="0"
+					 >
+	<s:Label id="question" left="10" right="10" top="5" height="75" text="{data.question}"/>
+	<s:VGroup left="10" right="10" top="85" bottom="0" gap="10" horizontalAlign="left"
+			  requestedRowCount="4" verticalAlign="middle" resizeMode="noScale">
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(0)}"/>
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(1)}"/>
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(2)}"/>
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(3)}"/>
+	</s:VGroup>
+</components:LightBox>
