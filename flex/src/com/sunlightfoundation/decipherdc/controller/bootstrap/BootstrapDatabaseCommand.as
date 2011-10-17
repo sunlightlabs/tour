@@ -1,14 +1,13 @@
 package com.sunlightfoundation.decipherdc.controller.bootstrap
 {
-	import com.sunlightfoundation.decipherdc.service.events.DatabaseReadyEvent;
-	
 	import com.probertson.data.SQLRunner;
-
+	import com.sunlightfoundation.decipherdc.service.events.DatabaseEvent;
+	
 	import flash.filesystem.File;
 	
 	import org.robotlegs.mvcs.Command;
 	
-	public class ConfigureDatabaseCommand extends Command
+	public class BootstrapDatabaseCommand extends Command
 	{
 		private static const DB_FILE_NAME:String = "scandal_tour.sqlite3";
 		
@@ -26,7 +25,7 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 			
 			injector.mapValue(SQLRunner, sqlRunner);
 			
-			dispatch(new DatabaseReadyEvent());
+			dispatch(new DatabaseEvent(DatabaseEvent.READY));
 		}
 
 	}

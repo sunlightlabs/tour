@@ -1,28 +1,30 @@
 package com.sunlightfoundation.decipherdc.controller
 {
-	import com.sunlightfoundation.decipherdc.events.CharacterViewEvent;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
-	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	import com.sunlightfoundation.decipherdc.view.CharacterView;
-	import com.sunlightfoundation.decipherdc.view.QuizView;
 	
-	import mx.collections.ArrayCollection;
 	import mx.utils.StringUtil;
 	
 	import org.robotlegs.mvcs.Command;
-	
-	import spark.components.ViewNavigatorApplication;
 	
 	public class StartGameCommand extends Command
 	{
 		[Inject]
 		public var locationListModel:LocationListModel;
-		
+
 		override public function execute():void
 		{
-			var randInt:int = Math.floor(Math.random()*locationListModel.locations.length);
+			trace("StartGameCommand run");
+			var view:* = generateSampleView();
+
+		}
+		
+		private function generateSampleView():*
+		{
+			var randInt:int = Math.floor(Math.random()*locationListModel.locations.length)+1;
+			trace("get location["+randInt+"]");
 			var location:Location = locationListModel.getLocationById(randInt);
 			trace(location.name);
 			locationListModel.selected = location;
@@ -35,24 +37,37 @@ package com.sunlightfoundation.decipherdc.controller
 			var view:CharacterView = new CharacterView();
 			
 			view.data = tempData;
-//			view.image.source = tempData.image;
-//			view.dialogue.text = tempData.dialogue;
+			//			view.image.source = tempData.image;
+			//			view.dialogue.text = tempData.dialogue;
 			
-			var quizView:QuizView = new QuizView();
+			//			var quizView:QuizView = new QuizView();
+			//			
+			//			var quizItem:QuizItem = new QuizItem();
+			//			quizItem.question = "Who was the first president of the United States?";
+			//			quizItem.answers = new ArrayCollection([
+			//				'Tina Fey',
+			//				'George Washington',
+			//				'John Q Public is a name I made up and I want to see how the button expands and how the vertical layout adjusts to longer text.',
+			//				'Steve McQueen'
+			//			]);
+			//			quizView.data = quizItem;
+			//			quizView.width = contextView.stage.width;
 			
-			var quizItem:QuizItem = new QuizItem();
-			quizItem.question = "Who was the first president of the United States?";
-			quizItem.answers = new ArrayCollection([
-				'Tina Fey',
-				'George Washington',
-				'John Q Public is a name I made up and I want to see how the button expands and how the vertical layout adjusts to longer text.',
-				'Steve McQueen'
-			]);
-			quizView.data = quizItem;
+			trace("contextView.stage.width: "+contextView.stage.width);
+			trace("contextView.stage.height: "+contextView.stage.height);
 			
-			ViewNavigatorApplication(contextView).navigator.addElement(quizView);
-
-//			dispatch(new CharacterViewEvent(CharacterViewEvent.SHOW, view));			
+			//			quizView.open(ViewNavigatorApplication(contextView).navigator);
+			
+			
+			//			var feedBackView:FeedbackView = new FeedbackView();
+			//			ViewNavigatorApplication(contextView).navigator.pushView(FeedbackView);
+			//			ViewNavigatorApplication(contextView).navigator.addElement(feedBackView);
+			
+			
+			//			ViewNavigatorApplication(contextView).navigator.addElement(quizView);
+			
+			return view;
 		}
+
 	}
 }

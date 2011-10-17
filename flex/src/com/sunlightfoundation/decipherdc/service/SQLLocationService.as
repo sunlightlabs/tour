@@ -1,9 +1,10 @@
 package com.sunlightfoundation.decipherdc.service
 {
 	import com.probertson.data.SQLRunner;
+	import com.sunlightfoundation.decipherdc.controller.events.LocationsLoadedEvent;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
-	import com.sunlightfoundation.decipherdc.controller.events.LocationsLoadedEvent;
+	import com.sunlightfoundation.decipherdc.service.events.DatabaseEvent;
 	
 	import flash.data.SQLResult;
 	import flash.errors.SQLError;
@@ -36,7 +37,7 @@ package com.sunlightfoundation.decipherdc.service
             {
                 locationListModel.addLocation(location);
             }
-			dispatch(new LocationsLoadedEvent());
+			dispatch(new DatabaseEvent(DatabaseEvent.DATA_LOADED));
 
 		}
 		
