@@ -5,9 +5,5 @@ package com.sunlightfoundation.decipherdc.service
 	public interface ILocationService
 	{
 		function loadAllLocations():void;
-		
-		function loadLocationById(id:int):void;
-		
-//		function loadLocationsByType(type:String):void;
 	}
 }

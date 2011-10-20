@@ -12,7 +12,11 @@ s|Application, s|View {
 s|TextArea {
 	fontSize: 13;
 	contentBackgroundAlpha: 0;
-	borderVisible: false;
+}
+
+s|Scroller {
+	contentBackgroundColor: #FFF;
+	contentBackgroundAlpha: 1.0;
 }
 
 #characterName {
@@ -20,15 +24,21 @@ s|TextArea {
 	fontWeight: bold;
 }
 
-view|QuizView {
-	backgroundColor: #000;
-	backgroundAlpha: 0.6
+s|Button {
+	chromeColor: #A5A4A2;
 }
 
-view|QuizView #overlay {
-	backgroundColor: #efe1d6;
-}
 
 comp|MultilineButton {
 	fontWeight:normal;
+}
+
+comp|LightBox {
+	chromeColor: #efe1d6;
+}
+
+global
+{
+	content-background-alpha: 1.0;
+	chromeColor: #efe1d6;
 }

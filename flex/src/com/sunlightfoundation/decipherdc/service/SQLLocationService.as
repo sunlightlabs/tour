@@ -1,7 +1,6 @@
 package com.sunlightfoundation.decipherdc.service
 {
 	import com.probertson.data.SQLRunner;
-	import com.sunlightfoundation.decipherdc.controller.events.LocationsLoadedEvent;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
 	import com.sunlightfoundation.decipherdc.service.events.DatabaseEvent;
@@ -25,10 +24,6 @@ package com.sunlightfoundation.decipherdc.service
 			sqlRunner.execute(LOAD_ALL_LOCATIONS, {}, loadAllLocationsResultHandler, Location);
 		}
 		
-		public function loadLocationById(id:int):void
-		{
-		}
-		
 		private function loadAllLocationsResultHandler(result:SQLResult):void
 		{
 			trace("loadAllLocationsResultHandler: " + result.data.length);
@@ -37,7 +32,7 @@ package com.sunlightfoundation.decipherdc.service
             {
                 locationListModel.addLocation(location);
             }
-			dispatch(new DatabaseEvent(DatabaseEvent.DATA_LOADED));
+			locationListModel.loaded = true;
 
 		}
 		

@@ -2,7 +2,6 @@ package com.sunlightfoundation.decipherdc.app
 {
     import com.sunlightfoundation.decipherdc.controller.InitializeGameCommand;
     import com.sunlightfoundation.decipherdc.controller.bootstrap.BootstrapAppStartup;
-    import com.sunlightfoundation.decipherdc.view.*;
     
     import org.robotlegs.base.CommandMap;
     import org.robotlegs.base.ContextEvent;

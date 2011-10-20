@@ -46,7 +46,7 @@ package com.sunlightfoundation.decipherdc.view.components
 		[Bindable("dataChange")]
 		public function get data():Object
 		{
-			return null;
+			return _data;
 		}
 		
 		public function set data(value:Object):void
@@ -80,8 +80,6 @@ package com.sunlightfoundation.decipherdc.view.components
 			contentGroup.width = this.width - 20;
 			contentGroup.height = this.height - 20;
 			super.updateDisplayList(unscaledWidth, unscaledHeight);
-			
-			
 		}
 		
 	}
