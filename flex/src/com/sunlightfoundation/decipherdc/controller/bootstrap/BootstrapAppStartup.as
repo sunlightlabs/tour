@@ -15,6 +15,8 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 			trace("BootstrapAppStartup run");
 			commandMap.mapEvent(DatabaseEvent.READY, BootstrapModels, DatabaseEvent, true); // means non-db models are waiting for db to be ready...
 			commandMap.mapEvent(DatabaseEvent.READY, ConfigureModelsCommand, DatabaseEvent, true);
+			commandMap.mapEvent(AppEvent.READY, GenerateTaskSequence, AppEvent, true);
+			commandMap.mapEvent(AppEvent.READY, BootstrapGameplayCommand, AppEvent, true);
 			commandMap.mapEvent(AppEvent.READY, StartGameCommand, AppEvent, true);
 			commandMap.mapEvent(AppEvent.INITIALIZE, BootstrapDatabaseCommand, AppEvent, true);
 			commandMap.mapEvent(AppEvent.INITIALIZE, BootstrapViewMediators, AppEvent, true);

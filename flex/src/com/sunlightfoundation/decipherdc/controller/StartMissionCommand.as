@@ -1,9 +1,10 @@
 package com.sunlightfoundation.decipherdc.controller
 {
+	import com.sunlightfoundation.decipherdc.model.IGameConfig;
+	import com.sunlightfoundation.decipherdc.model.IGameStateModel;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.events.CharacterEvent;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
-	import com.sunlightfoundation.decipherdc.model.IGameConfig;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
 	
 	import mx.utils.StringUtil;
@@ -20,23 +21,17 @@ package com.sunlightfoundation.decipherdc.controller
 		[Inject]
 		public var gameConfig:IGameConfig;
 
+		[Inject]
+		public var gameStateModel:IGameStateModel;
+
 		override public function execute():void
 		{
 			// Generate mission based on randomized list of locations
 			trace("StartMissionCommand run");
 						
-			var unshuffled_tasks:Array = locationListModel.getLocationsByType('task').toArray();
-			trace(unshuffled_tasks.length);
-			var task_sequence:Array = new Array();
+			trace("gameStateModel.taskSequence.length: " + gameStateModel.taskSequence.length);
 			
-			for(var n:int=unshuffled_tasks.length-1; n >= 0; n--)
-			{
-				var r:int = Math.random()* unshuffled_tasks.length;
-				task_sequence.push(unshuffled_tasks[r]);
-				trace("task_sequence["+(task_sequence.length-1)+"] = " + unshuffled_tasks[r].name);
-				unshuffled_tasks.splice(r, 1);
-			}
-			var location:Location = task_sequence[0];
+			var location:Location = gameStateModel.taskSequence[0];
 			
 			trace(location.name);
 			locationListModel.selected = location;

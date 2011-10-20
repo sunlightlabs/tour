@@ -24,7 +24,7 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 			injector.mapSingletonOf(ILocationService, SQLLocationService);
 			injector.mapSingleton(LocationListModel);
 			// game state singleton that loads/saves/contains app state?
-			injector.mapSingleton(GameStateModel);
+			injector.mapSingletonOf(IGameStateModel, GameStateModel);
 			injector.mapSingletonOf(IGameConfig, GameConfig);
 			
 		}

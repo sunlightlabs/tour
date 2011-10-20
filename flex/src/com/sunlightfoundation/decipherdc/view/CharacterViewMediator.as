@@ -1,6 +1,8 @@
 package com.sunlightfoundation.decipherdc.view
 {
+	import com.sunlightfoundation.decipherdc.model.events.QuizItemEvent;
 	import com.sunlightfoundation.decipherdc.model.events.CharacterEvent;
+	import com.sunlightfoundation.decipherdc.view.events.QuizViewEvent;
 	
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
@@ -34,11 +36,7 @@ package com.sunlightfoundation.decipherdc.view
 		
 		public function actionClickHandler(event:MouseEvent):void
 		{
-			trace("actionClickHandler");
-			trace("event: "+event);
-			trace("event.target: "+event.target);
-//			trace("actionLabel: "+actionLabel);
-//			dispatch(new CharacterEvent(CharacterEvent.ACTION_CLICK, view.data));
+			dispatch(new QuizItemEvent(QuizItemEvent.ASK_QUESTION));
 		}
 		
 	}

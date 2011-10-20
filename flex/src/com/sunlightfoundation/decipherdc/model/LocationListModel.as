@@ -1,29 +1,52 @@
 package com.sunlightfoundation.decipherdc.model
 {
-	import com.sunlightfoundation.decipherdc.model.vo.Location;
+	import collections.ArrayList;
+	import collections.ArraySet;
 	
-	import mx.collections.ArrayCollection;
+	import com.sunlightfoundation.decipherdc.model.events.ModelEvent;
+	import com.sunlightfoundation.decipherdc.model.vo.Location;
 	
 	import org.robotlegs.mvcs.Actor;
 	
 	public class LocationListModel extends Actor
 	{
-		private var _locations:ArrayCollection;
+		private var _locations:ArraySet;
 		private var _selected:Location;
+		private var _loaded:Boolean;
 		
 		public function getLocationById(id:int):Location
 		{
 			for each(var location:Location in locations)
 			{
-				trace("Looking at location.id="+location.id);
 				if(location.id == id) return location;
 			}
 			return null;
 		}
 		
-		public function get locations():ArrayCollection
+		public function get loaded():Boolean
 		{
-			return _locations ||= new ArrayCollection();
+			return _loaded || false;
+		}
+		
+		public function set loaded(value:Boolean):void
+		{
+			if (value) _loaded = value;
+			dispatch(new ModelEvent(ModelEvent.DATA_LOADED, this));
+		}
+		
+		public function getLocationsByType(type:String):ArrayList
+		{
+			var _typeLocations:ArrayList = new ArrayList();
+			for each(var location:Location in locations)
+			{
+				if(location.type == type) _typeLocations.add(location);
+			}
+			return _typeLocations;
+		}
+		
+		public function get locations():ArraySet
+		{
+			return _locations ||= new ArraySet();
 		}
 		
 		public function get selected():Location 
@@ -41,7 +64,7 @@ package com.sunlightfoundation.decipherdc.model
 		public function addLocation(location:Location):void
 		{
 			if(!locations.contains(location)) {
-				locations.addItem(location);
+				locations.add(location);
 			}
 		}
 	}
