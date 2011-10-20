@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:app="com.sunlightfoundation.decipherdc.app.*"
+			   xmlns:view="com.sunlightfoundation.decipherdc.view.*"
+			   xmlns:maps="com.google.maps.*"
+			   xmlns:images="assets.images.*"
+			   applicationDPI="160"
+			   splashScreenScaleMode="none"
+			   >
+	<fx:Declarations>
+		<app:ApplicationContext contextView="{this}" />
+	</fx:Declarations>
+	<fx:Style source="assets/styles/main.css" />
+</s:Application>

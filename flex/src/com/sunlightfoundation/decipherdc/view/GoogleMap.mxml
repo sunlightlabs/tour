@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<maps:Map xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:maps="com.google.maps.*"
+		  mapevent_mapready="onMapReady(event)"
+		  mapevent_mappreinitialize="map1_mapevent_mappreinitializeHandler(event)"
+		  width="100%" 
+		  height="100%" 
+		  key="ABQIAAAA9eY_V4woefdF00ahVl9PrxRBZ2tPRqR0de0yvU8x9MqGn2JzExSoB13y_V7krFkJ1PkMoDP3GvGOvA"
+		  url="http://sunlightlabs.com"
+		  sensor="false"
+		  >
+	<fx:Script>
+		<![CDATA[
+			import com.google.maps.LatLng;
+			import com.google.maps.Map;
+			import com.google.maps.MapEvent;
+			import com.google.maps.MapType;
+			
+			private function onMapReady(event:Event):void {
+				this.setCenter(new LatLng(40.736072,-73.992062), 14, MapType.NORMAL_MAP_TYPE);
+			}
+			
+			protected function map1_mapevent_mappreinitializeHandler(event:MapEvent):void
+			{
+				// TODO Auto-generated method stub
+				trace("preinitialize map!");
+			}
+			
+		]]>
+	</fx:Script>
+</maps:Map>

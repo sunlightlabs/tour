@@ -1,1 +1,0 @@
-st.tests.enabled = true;

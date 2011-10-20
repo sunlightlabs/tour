@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components:LightBox xmlns:fx="http://ns.adobe.com/mxml/2009"
+					 xmlns:s="library://ns.adobe.com/flex/spark"
+					 xmlns:components="com.sunlightfoundation.decipherdc.view.components.*"
+					 top="0" left="0" right="0" bottom="0"
+					 >
+	<s:Label id="question" left="10" right="10" top="5" height="75" text="{data.question}"/>
+	<s:VGroup left="10" right="10" top="85" bottom="0" gap="10" horizontalAlign="left"
+			  requestedRowCount="4" verticalAlign="middle" resizeMode="noScale">
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(0)}"/>
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(1)}"/>
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(2)}"/>
+		<components:MultilineButton width="270" label="{data.answers.getItemAt(3)}"/>
+	</s:VGroup>
+</components:LightBox>

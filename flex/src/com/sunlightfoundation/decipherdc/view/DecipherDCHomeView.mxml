@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		actionBarVisible="false" tabBarVisible="false" title="Decipher DC">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.utils.StringUtil;
+			
+			private var dialogueTemplate:String = "We are investigating {0}. I think {1} may be spending gobs of money, but I need you to find out! Here's my list of sources. Go pump them for information! Terry richardson cardigan skateboard cliche cred, banh mi master cleanse. Lomo trust fund jean shorts freegan wolf, tofu thundercats next level blog locavore dreamcatcher put a bird on it echo park four loko. Blog freegan hoodie seitan echo park. Four loko chambray viral bicycle rights, PBR fap mixtape trust fund hoodie leggings ethical irony vice gentrify etsy. PBR letterpress tofu viral. Mlkshk echo park mixtape, yr biodiesel wolf portland fap. Food truck fixie terry richardson american apparel.\n\nFreegan cred echo park vice american apparel sartorial. Photo booth trust fund williamsburg, cosby sweater artisan next level cardigan 3 wolf moon banh mi brunch stumptown 8-bit keffiyeh high life. Letterpress dreamcatcher wayfarers, 3 wolf moon synth DIY pitchfork mixtape high life Austin fixie food truck hoodie keytar. 3 wolf moon messenger bag letterpress marfa scenester squid VHS, whatever cosby sweater irony terry richardson put a bird on it salvia thundercats. Organic terry richardson letterpress, master cleanse iphone bicycle rights lomo etsy scenester vegan. Freegan lomo readymade single-origin coffee twee aesthetic. Scenester vinyl terry richardson sartorial, ethical craft beer high life artisan pitchfork mustache PBR dreamcatcher butcher hoodie yr.";
+			
+			protected function beginBtn_clickHandler(event:MouseEvent):void
+			{
+				navigator.pushView(CharacterView, {
+					characterName: 'James Spader',
+					characterDialogue: StringUtil.substitute(dialogueTemplate, ['jello', 'your momma']),
+					characterImage: 'assets/jjj.jpg',
+					buttonLabel: "Go get 'em"
+				});
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Button x="123" y="206" label="Begin" click="beginBtn_clickHandler(event)"/>
+</s:View>

@@ -1,0 +1,44 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+@namespace view "com.sunlightfoundation.decipherdc.view.*";
+@namespace comp "com.sunlightfoundation.decipherdc.view.components.*";
+
+
+s|Application, s|View {
+	backgroundColor: #efe1d6;
+}
+
+s|TextArea {
+	fontSize: 13;
+	contentBackgroundAlpha: 0;
+}
+
+s|Scroller {
+	contentBackgroundColor: #FFF;
+	contentBackgroundAlpha: 1.0;
+}
+
+#characterName {
+	fontSize: 16;
+	fontWeight: bold;
+}
+
+s|Button {
+	chromeColor: #A5A4A2;
+}
+
+
+comp|MultilineButton {
+	fontWeight:normal;
+}
+
+comp|LightBox {
+	chromeColor: #efe1d6;
+}
+
+global
+{
+	content-background-alpha: 1.0;
+	chromeColor: #efe1d6;
+}
