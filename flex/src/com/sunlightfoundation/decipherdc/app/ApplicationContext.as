@@ -21,9 +21,6 @@ package com.sunlightfoundation.decipherdc.app
 			commandMap.mapEvent(ContextEvent.STARTUP_COMPLETE, BootstrapAppStartup, ContextEvent, true);
 			commandMap.mapEvent(ContextEvent.STARTUP_COMPLETE, InitializeGameCommand, ContextEvent, true);
             
-			mediatorMap.mapView(CharacterView, CharacterViewMediator);
-			mediatorMap.mapView(QuizView, QuizViewMediator);
-            
            super.startup();
         }
     }

@@ -1,6 +1,6 @@
 package com.sunlightfoundation.decipherdc.controller
 {
-	import com.sunlightfoundation.decipherdc.events.CharacterViewEvent;
+	import com.sunlightfoundation.decipherdc.model.events.CharacterEvent;
 	import com.sunlightfoundation.decipherdc.view.CharacterView;
 	
 	import org.robotlegs.mvcs.Command;
@@ -8,7 +8,7 @@ package com.sunlightfoundation.decipherdc.controller
 	public class ShowCharacterViewCommand extends Command
 	{
 		[Inject]
-		public var characterViewEvent:CharacterViewEvent;
+		public var characterViewEvent:CharacterEvent;
 		
 		[Inject]
 		public var view:CharacterView;

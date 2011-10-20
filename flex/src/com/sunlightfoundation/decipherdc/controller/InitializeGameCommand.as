@@ -1,7 +1,7 @@
 package com.sunlightfoundation.decipherdc.controller
 {
 	import com.sunlightfoundation.decipherdc.controller.events.AppEvent;
-	import com.sunlightfoundation.decipherdc.events.CharacterViewEvent;
+	import com.sunlightfoundation.decipherdc.model.events.CharacterEvent;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;

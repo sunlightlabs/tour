@@ -1,33 +1,34 @@
 package com.sunlightfoundation.decipherdc.app
 {
-	import com.sunlightfoundation.decipherdc.events.*;
+	import com.google.maps.Alpha;
+	import com.sunlightfoundation.decipherdc.model.events.*;
 	import com.sunlightfoundation.decipherdc.view.*;
 	
 	import flash.events.Event;
 	
 	import org.robotlegs.mvcs.Mediator;
 	
-	import spark.components.ViewNavigator;
-	import spark.components.ViewNavigatorApplication;
+	import spark.components.Application;
 	
 	public class ApplicationMediator extends Mediator
 	{
-		private var nav:ViewNavigator;
+		[Inject]
+		public var view:DecipherDC;
 		
 		override public function onRegister():void
 		{
 			trace("ApplicationMediator run");
-			nav = ViewNavigatorApplication(contextView).navigator;
-			nav.hideActionBar(false);
 			
-			eventMap.mapListener(eventDispatcher, CharacterViewEvent.SHOW, handleCharacterShow);
-
+			eventMap.mapListener(eventDispatcher, CharacterEvent.SHOW, handleCharacterShow);
+//			eventMap.mapListener(eventDispatcher, CharacterViewEvent.ACTION_CLICK, handleActionClick);
 		}
 		
-		public function handleCharacterShow(event:CharacterViewEvent):void
+		public function handleCharacterShow(event:CharacterEvent):void
 		{
-			trace("handleCharacterShow event.characterView: " + event.characterView);
-			nav.addElement(event.characterView);
+			trace("handleCharacterShow event.characterView: " + event.character);
+			var newView:CharacterView = new CharacterView();
+			newView.data = event.character;
+			view.addElement(newView);
 			trace("Something happen here");
 		}
 	}
