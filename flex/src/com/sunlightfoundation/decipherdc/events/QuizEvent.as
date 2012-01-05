@@ -1,17 +1,18 @@
-package com.sunlightfoundation.decipherdc.model.events
+package com.sunlightfoundation.decipherdc.events
 {
 	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	
 	import flash.events.Event;
 	
-	public class QuizItemEvent extends Event
+	public class QuizEvent extends Event
 	{
 		public static const ASK_QUESTION:String = "QuizEvent.askQuestion";
 		public static const SHOW:String = "QuizEvent.show";
+		public static const HANDLE_RESPONSE:String = "QuizEvent.handleResponse";
 		
 		private var _quizItem:QuizItem;
 		
-		public function QuizItemEvent(type:String, quizItem:QuizItem=null, bubbles:Boolean=false, cancelable:Boolean=false)
+		public function QuizEvent(type:String, quizItem:QuizItem=null, bubbles:Boolean=false, cancelable:Boolean=false)
 		{
 			super(type, bubbles, cancelable);
 			_quizItem = quizItem;
@@ -24,7 +25,7 @@ package com.sunlightfoundation.decipherdc.model.events
 		
 		override public function clone():Event
 		{
-			return new QuizItemEvent(type, quizItem, bubbles, cancelable);
+			return new QuizEvent(type, quizItem, bubbles, cancelable);
 		}
 	}
 }

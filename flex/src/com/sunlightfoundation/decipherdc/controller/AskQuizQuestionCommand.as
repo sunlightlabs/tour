@@ -1,6 +1,6 @@
 package com.sunlightfoundation.decipherdc.controller
 {
-	import com.sunlightfoundation.decipherdc.model.events.QuizItemEvent;
+	import com.sunlightfoundation.decipherdc.events.QuizEvent;
 	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	
 	import org.robotlegs.mvcs.Command;
@@ -20,7 +20,7 @@ package com.sunlightfoundation.decipherdc.controller
 				]
 			);
 			
-			dispatch(new QuizItemEvent(QuizItemEvent.SHOW, quizQuestion));
+			dispatch(new QuizEvent(QuizEvent.SHOW, quizQuestion));
 		}
 	}
 }
