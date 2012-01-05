@@ -2,6 +2,8 @@ package com.sunlightfoundation.decipherdc.app
 {
 	import com.google.maps.Alpha;
 	import com.sunlightfoundation.decipherdc.model.events.*;
+	import com.sunlightfoundation.decipherdc.events.QuizEvent;
+	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	import com.sunlightfoundation.decipherdc.view.*;
 	import com.sunlightfoundation.decipherdc.view.events.QuizViewEvent;
 	
@@ -10,6 +12,7 @@ package com.sunlightfoundation.decipherdc.app
 	import org.robotlegs.mvcs.Mediator;
 	
 	import spark.components.Application;
+	import spark.managers.PersistenceManager;
 	
 	public class ApplicationMediator extends Mediator
 	{
@@ -21,8 +24,10 @@ package com.sunlightfoundation.decipherdc.app
 			trace("ApplicationMediator run");
 			
 			eventMap.mapListener(eventDispatcher, CharacterEvent.SHOW, handleCharacterShow, CharacterEvent);
-			eventMap.mapListener(eventDispatcher, QuizItemEvent.SHOW, handleQuizItemShow, QuizItemEvent);
+			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, handleQuizItemShow, QuizEvent);
+			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, storeQuizItem, QuizEvent);
 			eventMap.mapListener(eventDispatcher, CharacterEvent.ACTION_CLICK, handleActionClick);
+			eventMap.mapListener(eventDispatcher, QuizViewEvent.BUTTON_CLICK, handleQuizClick, QuizViewEvent);
 		}
 		
 		// Change to showView command listener thingy
@@ -36,12 +41,20 @@ package com.sunlightfoundation.decipherdc.app
 		}
 
 		
-		public function handleQuizItemShow(event:QuizItemEvent):void
+		public function handleQuizItemShow(event:QuizEvent):void
 		{
-			trace("handleCharacterShow event.quizItem: " + event.quizItem);
+			trace("handleQuizItemShow event.quizItem: " + event.quizItem);
 			var quizView:QuizView = new QuizView();
 			quizView.data = event.quizItem;
 			view.addElement(quizView);
+		}
+		
+		public function storeQuizItem(event:QuizEvent):void
+		{
+			trace("Store data");
+			var pm:PersistenceManager = new PersistenceManager();
+			pm.load();
+			pm.setProperty('quizItem', event.quizItem);			
 		}
 
 		public function handleActionClick(event:CharacterEvent):void
@@ -49,6 +62,12 @@ package com.sunlightfoundation.decipherdc.app
 //			dispatch(new QuizViewEvent(QuizViewEvent.BUTTON_CLICK));
 			var quizView:QuizView = new QuizView();
 			view.addElement(quizView);
+		}
+		
+		public function handleQuizClick(event:QuizViewEvent):void
+		{
+			trace("handleQuizClick: " + event.labelText);
+//			trace(event.labelText);
 		}
 	}
 }
