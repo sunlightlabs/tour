@@ -1,11 +1,13 @@
 package com.sunlightfoundation.decipherdc.app
 {
 	import com.google.maps.Alpha;
-	import com.sunlightfoundation.decipherdc.model.events.*;
 	import com.sunlightfoundation.decipherdc.events.QuizEvent;
+	import com.sunlightfoundation.decipherdc.model.GameStateModel;
+	import com.sunlightfoundation.decipherdc.model.IGameStateModel;
+	import com.sunlightfoundation.decipherdc.model.events.*;
 	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	import com.sunlightfoundation.decipherdc.view.*;
-	import com.sunlightfoundation.decipherdc.view.events.QuizViewEvent;
+	import com.sunlightfoundation.decipherdc.view.events.ViewEvent;
 	
 	import flash.events.Event;
 	
@@ -19,6 +21,8 @@ package com.sunlightfoundation.decipherdc.app
 		[Inject]
 		public var view:DecipherDC;
 		
+		private var gameState:IGameStateModel;
+		
 		override public function onRegister():void
 		{
 			trace("ApplicationMediator run");
@@ -26,8 +30,7 @@ package com.sunlightfoundation.decipherdc.app
 			eventMap.mapListener(eventDispatcher, CharacterEvent.SHOW, handleCharacterShow, CharacterEvent);
 			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, handleQuizItemShow, QuizEvent);
 			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, storeQuizItem, QuizEvent);
-			eventMap.mapListener(eventDispatcher, CharacterEvent.ACTION_CLICK, handleActionClick);
-			eventMap.mapListener(eventDispatcher, QuizViewEvent.BUTTON_CLICK, handleQuizClick, QuizViewEvent);
+			eventMap.mapListener(eventDispatcher, ViewEvent.REMOVE, removeView, ViewEvent);
 		}
 		
 		// Change to showView command listener thingy
@@ -57,17 +60,13 @@ package com.sunlightfoundation.decipherdc.app
 			pm.setProperty('quizItem', event.quizItem);			
 		}
 
-		public function handleActionClick(event:CharacterEvent):void
+		public function removeView(event:ViewEvent):void
 		{
-//			dispatch(new QuizViewEvent(QuizViewEvent.BUTTON_CLICK));
-			var quizView:QuizView = new QuizView();
-			view.addElement(quizView);
-		}
-		
-		public function handleQuizClick(event:QuizViewEvent):void
-		{
-			trace("handleQuizClick: " + event.labelText);
-//			trace(event.labelText);
+			view.removeElement(event.view);
+			gameState = new GameStateModel();
+
+			trace("removeView and something: " + gameState.currentTaskId);
+			
 		}
 	}
 }
