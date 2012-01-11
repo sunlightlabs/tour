@@ -8,7 +8,9 @@ package com.sunlightfoundation.decipherdc.events
 	{
 		public static const ASK_QUESTION:String = "QuizEvent.askQuestion";
 		public static const SHOW:String = "QuizEvent.show";
-		public static const HANDLE_RESPONSE:String = "QuizEvent.handleResponse";
+		public static const ANSWER_SELECTED:String = "QuizEvent.answerSelected";
+		public static const CORRECT:String = "QuizEvent.correct";
+		public static const INCORRECT:String = "QuizEvent.incorrect";
 		
 		private var _quizItem:QuizItem;
 		

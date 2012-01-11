@@ -4,12 +4,31 @@
 					 xmlns:components="com.sunlightfoundation.decipherdc.view.components.*"
 					 top="0" left="0" right="0" bottom="0"
 					 >
+	<fx:Script>
+		<![CDATA[
+			import com.sunlightfoundation.decipherdc.events.QuizEvent;
+			import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
+			import com.sunlightfoundation.decipherdc.view.events.ViewEvent;
+			
+			import mx.events.FlexEvent;
+			
+			public var selected:String;
+			
+			public function buttonClickHandler(event:MouseEvent):void
+			{
+				trace("QuizView click!");
+				data.selected = MultilineButton(event.target).label;
+				dispatchEvent(new QuizEvent( QuizEvent.ANSWER_SELECTED, QuizItem(data) ));
+				dispatchEvent(new ViewEvent(ViewEvent.REMOVE, this, true));
+			}
+		]]>
+	</fx:Script>
 	<s:Label id="question" left="10" right="10" top="5" height="75" text="{data.question}"/>
 	<s:VGroup left="10" right="10" top="85" bottom="0" gap="10" horizontalAlign="left"
 			  requestedRowCount="4" verticalAlign="middle" resizeMode="noScale">
-		<components:MultilineButton width="270" label="{data.answers.getItemAt(0)}"/>
-		<components:MultilineButton width="270" label="{data.answers.getItemAt(1)}"/>
-		<components:MultilineButton width="270" label="{data.answers.getItemAt(2)}"/>
-		<components:MultilineButton width="270" label="{data.answers.getItemAt(3)}"/>
+		<components:MultilineButton click="buttonClickHandler(event)" width="270" label="{data.answers.getItemAt(0)}"/>
+		<components:MultilineButton click="buttonClickHandler(event)" width="270" label="{data.answers.getItemAt(1)}"/>
+		<components:MultilineButton click="buttonClickHandler(event)" width="270" label="{data.answers.getItemAt(2)}"/>
+		<components:MultilineButton click="buttonClickHandler(event)" width="270" label="{data.answers.getItemAt(3)}"/>
 	</s:VGroup>
 </components:LightBox>
