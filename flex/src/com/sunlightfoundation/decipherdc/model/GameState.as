@@ -8,14 +8,14 @@ package com.sunlightfoundation.decipherdc.model
 	
 	import org.robotlegs.mvcs.Actor;
 	
-	public class GameStateModel extends Actor implements IGameStateModel
+	public class GameState extends Actor implements IGameState
 	{
 		protected var _taskSequence:Vector.<Location>;
 		protected var _currentView:UIComponent = null;
 		protected var _currentCharacter:Character = null;
 		protected var _currentQuizItem:QuizItem;
 		
-		public function GameStateModel()
+		public function GameState()
 		{
 			super();
 		}

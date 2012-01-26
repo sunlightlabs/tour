@@ -2,9 +2,9 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 {
 //	import com.sunlightfoundation.decipherdc.events.CharacterViewEvent;
 	import com.sunlightfoundation.decipherdc.model.GameConfig;
-	import com.sunlightfoundation.decipherdc.model.GameStateModel;
+	import com.sunlightfoundation.decipherdc.model.GameState;
 	import com.sunlightfoundation.decipherdc.model.IGameConfig;
-	import com.sunlightfoundation.decipherdc.model.IGameStateModel;
+	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
@@ -24,7 +24,7 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 			injector.mapSingletonOf(ILocationService, SQLLocationService);
 			injector.mapSingleton(LocationListModel);
 			// game state singleton that loads/saves/contains app state?
-			injector.mapSingletonOf(IGameStateModel, GameStateModel);
+			injector.mapSingletonOf(IGameState, GameState);
 			injector.mapSingletonOf(IGameConfig, GameConfig);
 			
 		}

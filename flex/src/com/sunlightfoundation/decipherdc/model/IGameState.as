@@ -6,7 +6,7 @@ package com.sunlightfoundation.decipherdc.model
 	
 	import mx.core.UIComponent;
 
-	public interface IGameStateModel
+	public interface IGameState
 	{
 		function get currentTaskId():int;
 		

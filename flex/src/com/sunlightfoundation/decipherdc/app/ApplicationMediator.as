@@ -2,7 +2,7 @@ package com.sunlightfoundation.decipherdc.app
 {
 	import com.google.maps.Alpha;
 	import com.sunlightfoundation.decipherdc.events.QuizEvent;
-	import com.sunlightfoundation.decipherdc.model.IGameStateModel;
+	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.model.events.*;
 	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	import com.sunlightfoundation.decipherdc.view.*;

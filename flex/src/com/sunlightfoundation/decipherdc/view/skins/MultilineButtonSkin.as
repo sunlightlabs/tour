@@ -53,8 +53,8 @@ package com.sunlightfoundation.decipherdc.view.skins
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
 		{
 //			trace("updateDisplayList unscaledHeight: " + unscaledHeight);
-			trace("updateDisplayList this.height: " + this.height);
-			trace("updateDisplayList this.labelDisplay.height: " + this.labelDisplay.height);
+//			trace("updateDisplayList this.height: " + this.height);
+//			trace("updateDisplayList this.labelDisplay.height: " + this.labelDisplay.height);
 			
 //			The labelDisplay (StyleableTextField) sometimes takes a while to finish sizing when there is multiline text, 
 //			so we need to invalidateSize() if the labelDisplay (plus padding) doesn't fit in the button.

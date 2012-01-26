@@ -1,6 +1,6 @@
 package com.sunlightfoundation.decipherdc.controller
 {
-	import com.sunlightfoundation.decipherdc.model.IGameStateModel;
+	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
 	import com.sunlightfoundation.utils.ArrayUtils;
@@ -13,7 +13,7 @@ package com.sunlightfoundation.decipherdc.controller
 		public var locationListModel:LocationListModel;
 		
 		[Inject]
-		public var gameStateModel:IGameStateModel;
+		public var gameStateModel:IGameState;
 
 		override public function execute():void
 		{

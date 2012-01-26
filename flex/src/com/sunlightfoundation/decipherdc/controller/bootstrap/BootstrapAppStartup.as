@@ -20,8 +20,8 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 			commandMap.mapEvent(AppEvent.READY, StartGameCommand, AppEvent, true);
 			commandMap.mapEvent(AppEvent.INITIALIZE, BootstrapDatabaseCommand, AppEvent, true);
 			commandMap.mapEvent(AppEvent.INITIALIZE, BootstrapViewMediators, AppEvent, true);
-			commandMap.mapEvent(ModelEvent.DATA_LOADED, CheckGameplayReadyCommand, ModelEvent, false);
-			commandMap.mapEvent(AppEvent.NEW_MISSION, StartMissionCommand, AppEvent, true);
+			commandMap.mapEvent(ModelEvent.DATA_LOADED, CheckGameplayReadyCommand, ModelEvent, true);
+			commandMap.mapEvent(AppEvent.NEW_MISSION, StartMissionCommand, AppEvent, false);
 		}
 	}
 }
