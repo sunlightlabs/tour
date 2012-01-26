@@ -1,6 +1,5 @@
 package com.sunlightfoundation.decipherdc.controller
 {
-	import com.sunlightfoundation.decipherdc.model.events.CharacterEvent;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.service.ILocationService;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
