@@ -1,8 +1,7 @@
 package com.sunlightfoundation.decipherdc.controller
 {
 	import com.sunlightfoundation.decipherdc.app.ApplicationContext;
-	import com.sunlightfoundation.decipherdc.model.IGameStateModel;
-	import com.sunlightfoundation.decipherdc.model.events.CharacterEvent;
+	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.view.CharacterView;
 	
 	import org.robotlegs.mvcs.Command;
@@ -11,18 +10,17 @@ package com.sunlightfoundation.decipherdc.controller
 	
 	public class ShowCharacterCommand extends Command
 	{
-		[Inject]
-		public var event:CharacterEvent;
 		
 		[Inject]
-		public var gameStateModel:IGameStateModel;
+		public var gameState:IGameState;
 		
 		override public function execute():void
 		{
 			trace("ShowCharacterCommand");
+			if (gameState.currentView) Application(contextView).removeElement(gameState.currentView);
 			var characterView:CharacterView = new CharacterView();
-			gameStateModel.currentView = characterView;
-			characterView.data = gameStateModel.currentCharacter;
+			gameState.currentView = characterView;
+			characterView.data = gameState.currentCharacter;
 			Application(contextView).addElement(characterView);
 		}
 	}

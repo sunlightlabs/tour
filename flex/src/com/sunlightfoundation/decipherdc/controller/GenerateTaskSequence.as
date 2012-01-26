@@ -13,13 +13,13 @@ package com.sunlightfoundation.decipherdc.controller
 		public var locationListModel:LocationListModel;
 		
 		[Inject]
-		public var gameStateModel:IGameState;
+		public var gameState:IGameState;
 
 		override public function execute():void
 		{
 			var unshuffled_tasks:Array = locationListModel.getLocationsByType('task').toArray();
 			var task_sequence:Vector.<Location> = Vector.<Location>(ArrayUtils.shuffle(unshuffled_tasks));
-			gameStateModel.taskSequence = task_sequence;
+			gameState.taskSequence = task_sequence;
 		}
 	}
 }

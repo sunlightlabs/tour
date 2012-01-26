@@ -11,20 +11,22 @@ package com.sunlightfoundation.decipherdc.controller
 		[Inject]
 		public var event:QuizEvent;
 		
-		// Daniel is the best!
+		[Inject]
+		public var gameState:IGameState;
+		
 		override public function execute():void
 		{
 			trace("HandleQuizResponseCommand run");
-			trace("Question: " + event.quizItem.question);
-			trace("Response: " + event.quizItem.selected);
-			trace("Answer: " + event.quizItem.answer);
 			if(event.quizItem.selected === event.quizItem.answer)
 			{
+				gameState.currentCharacter.state = Character.MISSION_SUCCESS;
+				CharacterView(gameState.currentView).data = gameState.currentCharacter
 				dispatch(new QuizEvent(QuizEvent.CORRECT));
-
 			}
 			else
 			{
+				gameState.currentCharacter.state = Character.MISSION_FAIL;
+				CharacterView(gameState.currentView).data = gameState.currentCharacter
 				dispatch(new QuizEvent(QuizEvent.INCORRECT));
 			}
 //			Go to next task in the sequence?

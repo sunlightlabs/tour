@@ -1,8 +1,6 @@
 package com.sunlightfoundation.decipherdc.view
 {
-	import com.sunlightfoundation.decipherdc.events.QuizEvent;
-	import com.sunlightfoundation.decipherdc.model.events.CharacterEvent;
-	import com.sunlightfoundation.decipherdc.view.events.ViewEvent;
+	import com.sunlightfoundation.decipherdc.events.GameEvent;
 	
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
@@ -22,8 +20,6 @@ package com.sunlightfoundation.decipherdc.view
 		override public function onRegister():void
 		{
 			eventMap.mapListener(view.characterAction, MouseEvent.CLICK, actionClickHandler);
-			eventMap.mapListener(eventDispatcher, QuizEvent.INCORRECT, handleQuizIncorrect);
-			eventMap.mapListener(eventDispatcher, QuizEvent.CORRECT, handleQuizCorrect);
 			trace("CharacterViewMediator onRegister");
 			
 			var fadeOut:Fade = new Fade();
@@ -35,18 +31,9 @@ package com.sunlightfoundation.decipherdc.view
 		
 		public function actionClickHandler(event:MouseEvent):void
 		{
+			trace("actionClick!");
 			// Change to something that uses consts to define what types of actions a character might trigger
-			dispatch(new QuizEvent(QuizEvent.ASK_QUESTION));
-		}
-		
-		public function handleQuizIncorrect(event:QuizEvent):void
-		{
-			view.dialogue.text = "You got it wrong you dumb sonofabitch!";
-		}
-		
-		public function handleQuizCorrect(event:QuizEvent):void
-		{
-			view.dialogue.text = "You are so beautiful to me!";
+			dispatch(new GameEvent(GameEvent.TRIGGER_ACTION));
 		}
 		
 	}

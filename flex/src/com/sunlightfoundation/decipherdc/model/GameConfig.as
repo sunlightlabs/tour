@@ -1,10 +1,12 @@
 package com.sunlightfoundation.decipherdc.model
 {
+	import com.sunlightfoundation.decipherdc.events.GameEvent;
 	import com.sunlightfoundation.decipherdc.model.events.ModelEvent;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.CharacterState;
 	
 	import flash.utils.Dictionary;
+	
 	import mx.utils.StringUtil;
 	
 	public class GameConfig extends Object implements IGameConfig
@@ -71,7 +73,7 @@ package com.sunlightfoundation.decipherdc.model
 			var chars:Vector.<Character> = new Vector.<Character>();
 			
 			var actions:Dictionary = new Dictionary();
-			actions[Character.INITIAL_STATE] = new CharacterState(
+			actions[Character.ASK_QUESTION] = new CharacterState(
 				"I ain't got time for your bullshit! Do you even know anything about how Washington works?",
 				'Answer My Question'
 			);
