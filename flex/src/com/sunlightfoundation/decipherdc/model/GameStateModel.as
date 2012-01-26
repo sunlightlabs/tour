@@ -1,19 +1,26 @@
 package com.sunlightfoundation.decipherdc.model
 {
+	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
+	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
+	
+	import mx.core.UIComponent;
 	
 	import org.robotlegs.mvcs.Actor;
 	
 	public class GameStateModel extends Actor implements IGameStateModel
 	{
 		protected var _taskSequence:Vector.<Location>;
+		protected var _currentView:UIComponent = null;
+		protected var _currentCharacter:Character = null;
+		protected var _currentQuizItem:QuizItem;
 		
 		public function GameStateModel()
 		{
 			super();
 		}
 		
-		// Needs work
+		// TODO make retrieval of a task easy, either by ID or returning a task item. Does GameStateModel control/track what task we are on?
 		public function get currentTaskId():int
 		{
 			return 0;
@@ -25,13 +32,42 @@ package com.sunlightfoundation.decipherdc.model
 		
 		public function get taskSequence():Vector.<Location>
 		{
-			// Should handler for generating new task sequence go here?
 			return _taskSequence;
 		}
 		
 		public function set taskSequence(value:Vector.<Location>):void
 		{
 			_taskSequence = value;
+		}
+		
+		public function get currentView():UIComponent
+		{
+			return _currentView;
+		}
+		
+		public function set currentView(view:UIComponent):void
+		{
+			_currentView = view;
+		}
+		
+		public function get currentCharacter():Character
+		{
+			return _currentCharacter;
+		}
+		
+		public function set currentCharacter(character:Character):void
+		{
+			_currentCharacter = character;
+		}
+		
+		public function get currentQuizItem():QuizItem
+		{
+			return _currentQuizItem;
+		}
+		
+		public function set currentQuizItem(quizItem:QuizItem):void
+		{
+			_currentQuizItem = quizItem;
 		}
 	}
 }

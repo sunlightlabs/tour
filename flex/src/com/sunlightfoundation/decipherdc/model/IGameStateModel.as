@@ -1,6 +1,10 @@
 package com.sunlightfoundation.decipherdc.model
 {
+	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
+	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
+	
+	import mx.core.UIComponent;
 
 	public interface IGameStateModel
 	{
@@ -11,5 +15,18 @@ package com.sunlightfoundation.decipherdc.model
 		function get taskSequence():Vector.<Location>;
 		
 		function set taskSequence(value:Vector.<Location>):void;
+		
+		function get currentView():UIComponent;
+		
+		function set currentView(view:UIComponent):void;
+		
+		function get currentCharacter():Character;
+		
+		function set currentCharacter(character:Character):void;
+		
+		function get currentQuizItem():QuizItem;
+		
+		function set currentQuizItem(quizItem:QuizItem):void;
+
 	}
 }
