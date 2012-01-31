@@ -1,6 +1,7 @@
 package com.sunlightfoundation.decipherdc.view.components
 {
 	
+	import com.sunlightfoundation.decipherdc.view.effects.QuickFade;
 	import com.sunlightfoundation.decipherdc.view.skins.LightBoxSkin;
 	
 	import mx.core.IDataRenderer;
@@ -8,7 +9,6 @@ package com.sunlightfoundation.decipherdc.view.components
 	
 	import spark.components.Group;
 	import spark.components.SkinnableContainer;
-	import spark.effects.Fade;
 	
 	
 	/**
@@ -27,7 +27,7 @@ package com.sunlightfoundation.decipherdc.view.components
 	public class LightBox extends SkinnableContainer implements IDataRenderer
 	{
 		private var _data:Object;
-		private var fadeIn:Fade;
+		private var fadeIn:QuickFade;
 		
 		public function LightBox()
 		{
@@ -35,10 +35,9 @@ package com.sunlightfoundation.decipherdc.view.components
 			setStyle("skinClass", LightBoxSkin);
 
 			visible = false;
-			fadeIn = new Fade();
+			fadeIn = new QuickFade();
 			fadeIn.alphaFrom = 0.0;
 			fadeIn.alphaTo = 1.0;
-			fadeIn.duration = 1000;
 			fadeIn.target = this;
 			setStyle("creationCompleteEffect", fadeIn);
 		}

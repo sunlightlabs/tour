@@ -20,9 +20,8 @@ package com.sunlightfoundation.decipherdc.view
 		override public function onRegister():void
 		{
 			eventMap.mapListener(view.characterAction, MouseEvent.CLICK, actionClickHandler);
-			trace("CharacterViewMediator onRegister");
 			
-			var fadeOut:Fade = new Fade();
+			var fadeOut:QuickFade = new QuickFade();
 			fadeOut.alphaFrom = view.alpha;
 			fadeOut.alphaTo = 0.0;
 			
