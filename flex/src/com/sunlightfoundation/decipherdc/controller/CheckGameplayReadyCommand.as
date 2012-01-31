@@ -25,8 +25,8 @@ package com.sunlightfoundation.decipherdc.controller
 				Locations must be loaded from DB into LocationListModel
 				GameConfig must be loaded...
 				Characters and Dialogue must be loaded from GameConfig
-				GameStateModel must be loaded...
-				Task sequence must be retrieved from GameStateModel or intialized from LocationListModel
+				gameState must be loaded...
+				Task sequence must be retrieved from gameState or intialized from LocationListModel
 			*/
 			trace("CheckGameplayReadyCommand running... ");
 			trace("		event.type = " + event.type);

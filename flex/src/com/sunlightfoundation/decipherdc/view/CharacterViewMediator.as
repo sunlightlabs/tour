@@ -1,6 +1,7 @@
 package com.sunlightfoundation.decipherdc.view
 {
 	import com.sunlightfoundation.decipherdc.events.GameEvent;
+	import com.sunlightfoundation.decipherdc.view.effects.QuickFade;
 	
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
@@ -9,9 +10,7 @@ package com.sunlightfoundation.decipherdc.view
 	import mx.events.TouchInteractionEvent;
 	
 	import org.robotlegs.mvcs.Mediator;
-	
-	import spark.effects.Fade;
-	
+		
 	public class CharacterViewMediator extends Mediator
 	{
 		[Inject]
@@ -30,8 +29,6 @@ package com.sunlightfoundation.decipherdc.view
 		
 		public function actionClickHandler(event:MouseEvent):void
 		{
-			trace("actionClick!");
-			// Change to something that uses consts to define what types of actions a character might trigger
 			dispatch(new GameEvent(GameEvent.TRIGGER_ACTION));
 		}
 		

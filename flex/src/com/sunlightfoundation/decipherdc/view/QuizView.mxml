@@ -16,7 +16,6 @@
 			
 			public function buttonClickHandler(event:MouseEvent):void
 			{
-				trace("QuizView click!");
 				data.selected = MultilineButton(event.target).label;
 				dispatchEvent(new QuizEvent( QuizEvent.ANSWER_SELECTED, QuizItem(data) ));
 				dispatchEvent(new ViewEvent(ViewEvent.REMOVE, this, true));

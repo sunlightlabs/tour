@@ -22,8 +22,6 @@ package com.sunlightfoundation.decipherdc.app
 		
 		override public function onRegister():void
 		{
-			trace("ApplicationMediator run");
-			
 			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, handleQuizItemShow, QuizEvent);
 			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, storeQuizItem, QuizEvent);
 			eventMap.mapListener(eventDispatcher, ViewEvent.REMOVE, removeView, ViewEvent);
@@ -31,7 +29,6 @@ package com.sunlightfoundation.decipherdc.app
 		
 		public function handleQuizItemShow(event:QuizEvent):void
 		{
-			trace("handleQuizItemShow event.quizItem: " + event.quizItem);
 			var quizView:QuizView = new QuizView();
 			quizView.data = event.quizItem;
 			view.addElement(quizView);
@@ -49,7 +46,7 @@ package com.sunlightfoundation.decipherdc.app
 		{
 			view.removeElement(event.view);
 
-//			trace("removeView and something: " + gameStateModel.currentTaskId);
+//			trace("removeView and something: " + gameState.currentTaskId);
 			
 		}
 	}
