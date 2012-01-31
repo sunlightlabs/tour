@@ -15,32 +15,8 @@ package com.sunlightfoundation.decipherdc.controller
 		
 		override public function execute():void
 		{
-			trace("HandleActionClickCommand: " + gameState.currentCharacter.state);
-			switch(gameState.currentCharacter.state)
-			{
-				case Character.GO_TO_SOURCE:
-				{
-					dispatch(new GameEvent(GameEvent.GO_TO_SOURCE));
-					break;
-				}
-					
-				case Character.ASK_QUESTION:
-				{
-					dispatch(new QuizEvent(QuizEvent.ASK_QUESTION));
-					break;
-				}
-					
-				case Character.MISSION_SUCCESS:
-				{
-					dispatch(new GameEvent(GameEvent.MISSION_SUCCESS));
-					break;
-				}
-					
-				default:
-				{
-					break;
-				}
-			}
+			trace("HandleActionClickCommand: " + gameState.nextPhase.type);
+			dispatch(gameState.nextPhase);
 		}
 	}
 }

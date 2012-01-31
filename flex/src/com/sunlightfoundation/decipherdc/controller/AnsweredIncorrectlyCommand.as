@@ -8,8 +8,12 @@ package com.sunlightfoundation.decipherdc.controller
 	
 	import org.robotlegs.mvcs.Command;
 	
-	public class GoToSourceCommand extends Command
+	public class AnsweredIncorrectlyCommand extends Command
 	{
+		
+		[Inject]
+		public var event:QuizEvent;
+		
 		[Inject]
 		public var gameConfig:IGameConfig;
 		
@@ -18,15 +22,12 @@ package com.sunlightfoundation.decipherdc.controller
 		
 		override public function execute():void
 		{
-			trace("GoToSourceCommand");
-//			Should load a source picker menu, but for now we go to a random source
-			var sources:Vector.<Character> = gameConfig.sourceCharacters;
+//			var editor:Character = gameConfig.editorCharacter;
+//			gameState.nextPhase = new GameEvent(GameEvent.NEW_MISSION);
+//			editor.setState( gameConfig.editorCharacterState(gameState.nextPhase.type) );
+//			gameState.currentCharacter = editor;
 			
-			gameState.nextPhase = new QuizEvent(QuizEvent.ASK_QUESTION);
-			sources[0].state = gameConfig.sourceCharacterState(gameState.nextPhase.type);
-			gameState.currentCharacter = sources[0];
-			
-			dispatch(new GameEvent(GameEvent.SHOW_CHARACTER));
+			dispatch(new GameEvent(GameEvent.NEW_MISSION));
 		}
 	}
 }

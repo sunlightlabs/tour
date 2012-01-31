@@ -9,8 +9,8 @@ package com.sunlightfoundation.decipherdc.events
 		public static const ASK_QUESTION:String = "QuizEvent.askQuestion";
 		public static const SHOW:String = "QuizEvent.show";
 		public static const ANSWER_SELECTED:String = "QuizEvent.answerSelected";
-		public static const CORRECT:String = "QuizEvent.correct";
-		public static const INCORRECT:String = "QuizEvent.incorrect";
+		public static const ANSWERED_CORRECTLY:String = "QuizEvent.answeredCorrectly";
+		public static const ANSWERED_INCORRECTLY:String = "QuizEvent.answeredIncorrectly";
 		
 		private var _quizItem:QuizItem;
 		

@@ -2,6 +2,7 @@ package com.sunlightfoundation.decipherdc.model.vo
 {
 	import flash.utils.Dictionary;
 
+	[Bindable]
 	public class Character
 	{
 		private var _name:String;
@@ -9,19 +10,11 @@ package com.sunlightfoundation.decipherdc.model.vo
 		private var _actions:Dictionary;
 		private var _dialogue:String;
 		private var _actionText:String;
-		private var _state:String;
 		
-		public static const INITIAL_STATE:String = 'Character.initialState';
-		public static const GO_TO_SOURCE:String = 'Character.gotoSource';
-		public static const MISSION_FAIL:String = 'Character.missionFail';
-		public static const MISSION_SUCCESS:String = 'Character.missionSuccess';
-		public static const ASK_QUESTION:String = 'Character.askQuestion';
-		
-		public function Character(name:String, image:String, actionsDict:Dictionary)
+		public function Character(name:String, image:String)
 		{
 			this._name = name;
 			this._image = image;
-			_actions = actionsDict;
 		}
 		
 		public function set name(input:String):void { };
@@ -48,20 +41,12 @@ package com.sunlightfoundation.decipherdc.model.vo
 			return _actionText;
 		}
 		
-		public function set state(state_name:String):void
+		public function set state(characterState:CharacterState):void
 		{
-			trace("settings state to: " + state_name);
-			if (_actions.propertyIsEnumerable(state_name))
-			{
-				_state = state_name;
-				_dialogue = _actions[state_name]['dialogue'];
-				_actionText = _actions[state_name]['actionText'];
-			}
+			_dialogue = characterState.dialogue;
+			_actionText = characterState.actionText;
+			
 		}
-		
-		public function get state():String
-		{
-			return _state;
-		}
+				
 	}
 }

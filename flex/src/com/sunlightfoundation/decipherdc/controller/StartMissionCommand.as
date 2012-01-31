@@ -6,6 +6,7 @@ package com.sunlightfoundation.decipherdc.controller
 	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
+	import com.sunlightfoundation.decipherdc.model.vo.CharacterState;
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
 	
 	import org.robotlegs.mvcs.Command;
@@ -34,7 +35,8 @@ package com.sunlightfoundation.decipherdc.controller
 			locationListModel.selected = location;
 						
 			var editor:Character = gameConfig.editorCharacter;
-			editor.state = Character.GO_TO_SOURCE;
+			gameState.nextPhase = new GameEvent(GameEvent.GO_TO_SOURCE);
+			editor.state = gameConfig.editorCharacterState(GameEvent.NEW_MISSION);
 			gameState.currentCharacter = editor;
 			
 			dispatch(new GameEvent(GameEvent.SHOW_CHARACTER));

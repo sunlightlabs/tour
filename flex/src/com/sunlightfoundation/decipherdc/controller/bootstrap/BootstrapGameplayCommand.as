@@ -11,12 +11,17 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 	{
 		override public function execute():void
 		{
+			commandMap.mapEvent(GameEvent.INTRO_GAME, IntroGameCommand, GameEvent, true);
+			commandMap.mapEvent(GameEvent.NEW_MISSION, StartMissionCommand, GameEvent, false);
 			commandMap.mapEvent(GameEvent.TRIGGER_ACTION, HandleActionClickCommand, GameEvent);
 			commandMap.mapEvent(QuizEvent.ASK_QUESTION, AskQuizQuestionCommand, QuizEvent);
 			commandMap.mapEvent(QuizEvent.ANSWER_SELECTED,  HandleQuizResponseCommand, QuizEvent);
 			commandMap.mapEvent(GameEvent.SHOW_CHARACTER, ShowCharacterCommand, GameEvent);
 			commandMap.mapEvent(GameEvent.GO_TO_SOURCE, GoToSourceCommand, GameEvent);
-			commandMap.mapEvent(GameEvent.MISSION_SUCCESS, StartMissionCommand, GameEvent); // Really there is an intermediary step.
+			commandMap.mapEvent(QuizEvent.ANSWERED_CORRECTLY, AnsweredCorrectlyCommand, QuizEvent);
+			commandMap.mapEvent(QuizEvent.ANSWERED_INCORRECTLY, AnsweredIncorrectlyCommand, QuizEvent);
+			commandMap.mapEvent(GameEvent.MISSION_WON, StartMissionCommand, GameEvent); // Really there is an intermediary step.
+			commandMap.mapEvent(GameEvent.MISSION_FAILED, ShowFailureCommand, GameEvent); // Really there is an intermediary step.
 		}
 	}
 }

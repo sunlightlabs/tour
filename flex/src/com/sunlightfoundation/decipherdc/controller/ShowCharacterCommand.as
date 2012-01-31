@@ -1,6 +1,7 @@
 package com.sunlightfoundation.decipherdc.controller
 {
 	import com.sunlightfoundation.decipherdc.app.ApplicationContext;
+	import com.sunlightfoundation.decipherdc.events.GameEvent;
 	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.view.CharacterView;
 	
@@ -12,16 +13,27 @@ package com.sunlightfoundation.decipherdc.controller
 	{
 		
 		[Inject]
+		public var event:GameEvent;
+		
+		[Inject]
 		public var gameState:IGameState;
 		
 		override public function execute():void
 		{
 			trace("ShowCharacterCommand");
-			if (gameState.currentView) Application(contextView).removeElement(gameState.currentView);
-			var characterView:CharacterView = new CharacterView();
-			gameState.currentView = characterView;
-			characterView.data = gameState.currentCharacter;
-			Application(contextView).addElement(characterView);
+			
+			if (event.kwargs.hasOwnProperty('new') && event.kwargs['new'] === true)
+			{
+				if (gameState.currentView) Application(contextView).removeElement(gameState.currentView);
+				gameState.currentView = new CharacterView();
+			}
+			else if (gameState.currentView === null )
+			{
+				gameState.currentView = new CharacterView();
+			}
+			var currentView:CharacterView = CharacterView(gameState.currentView);
+			currentView.data = gameState.currentCharacter;
+			Application(contextView).addElement(currentView);
 		}
 	}
 }

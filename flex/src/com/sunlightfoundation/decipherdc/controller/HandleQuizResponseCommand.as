@@ -1,8 +1,14 @@
 package com.sunlightfoundation.decipherdc.controller
 {
-	import com.sunlightfoundation.decipherdc.events.QuizEvent;
 	import com.sunlightfoundation.decipherdc.controller.events.AppEvent;
+	import com.sunlightfoundation.decipherdc.events.GameEvent;
+	import com.sunlightfoundation.decipherdc.events.QuizEvent;
+	import com.sunlightfoundation.decipherdc.model.GameState;
+	import com.sunlightfoundation.decipherdc.model.IGameConfig;
+	import com.sunlightfoundation.decipherdc.model.IGameState;
+	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
+	import com.sunlightfoundation.decipherdc.view.CharacterView;
 	
 	import org.robotlegs.mvcs.Command;
 	
@@ -12,6 +18,9 @@ package com.sunlightfoundation.decipherdc.controller
 		public var event:QuizEvent;
 		
 		[Inject]
+		public var gameConfig:IGameConfig;
+		
+		[Inject]
 		public var gameState:IGameState;
 		
 		override public function execute():void
@@ -19,17 +28,19 @@ package com.sunlightfoundation.decipherdc.controller
 			trace("HandleQuizResponseCommand run");
 			if(event.quizItem.selected === event.quizItem.answer)
 			{
-				gameState.currentCharacter.state = Character.MISSION_SUCCESS;
+				gameState.nextPhase = new QuizEvent(QuizEvent.ANSWERED_CORRECTLY);
+				gameState.currentCharacter.state = gameConfig.sourceCharacterState(QuizEvent.ANSWERED_CORRECTLY);
 				CharacterView(gameState.currentView).data = gameState.currentCharacter
-				dispatch(new QuizEvent(QuizEvent.CORRECT));
+//				dispatch(new QuizEvent(QuizEvent.CORRECT));
 			}
 			else
 			{
-				gameState.currentCharacter.state = Character.MISSION_FAIL;
+
+				gameState.nextPhase = new QuizEvent(QuizEvent.ANSWERED_INCORRECTLY);
+				gameState.currentCharacter.state = gameConfig.sourceCharacterState(QuizEvent.ANSWERED_INCORRECTLY);
 				CharacterView(gameState.currentView).data = gameState.currentCharacter
-				dispatch(new QuizEvent(QuizEvent.INCORRECT));
+//				dispatch(new QuizEvent(QuizEvent.INCORRECT));
 			}
-//			Go to next task in the sequence?
 		}
 	}
 }

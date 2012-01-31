@@ -1,6 +1,7 @@
 package com.sunlightfoundation.decipherdc.model
 {
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
+	import com.sunlightfoundation.decipherdc.model.vo.CharacterState;
 	
 	public interface IGameConfig
 	{
@@ -9,6 +10,10 @@ package com.sunlightfoundation.decipherdc.model
 		function get sourceCharacters():Vector.<Character>;
 		
 		function get editorCharacter():Character;
+
+		function editorCharacterState(state:String):CharacterState;
+
+		function sourceCharacterState(state:String):CharacterState;
 		
 	}
 }

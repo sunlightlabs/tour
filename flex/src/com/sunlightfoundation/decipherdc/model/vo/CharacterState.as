@@ -1,14 +1,10 @@
 package com.sunlightfoundation.decipherdc.model.vo
 {
-	import com.google.analytics.debug._Style;
 	
-	import flash.events.Event;
-
 	public class CharacterState extends Object
 	{
 		private var _dialogue:String;
 		private var _actionText:String;
-		private var _event:Event;
 		
 		public function CharacterState(dialogue:String, actionText:String)
 		{

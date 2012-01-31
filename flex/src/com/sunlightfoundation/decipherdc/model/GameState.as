@@ -4,6 +4,8 @@ package com.sunlightfoundation.decipherdc.model
 	import com.sunlightfoundation.decipherdc.model.vo.Location;
 	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 	
+	import flash.events.Event;
+	
 	import mx.core.UIComponent;
 	
 	import org.robotlegs.mvcs.Actor;
@@ -13,14 +15,16 @@ package com.sunlightfoundation.decipherdc.model
 		protected var _taskSequence:Vector.<Location>;
 		protected var _currentView:UIComponent = null;
 		protected var _currentCharacter:Character = null;
-		protected var _currentQuizItem:QuizItem;
+		protected var _currentQuizItem:QuizItem = null;
+		protected var _gamePhase:String = null;
+		protected var _nextPhaseEvent:Event = null;
 		
 		public function GameState()
 		{
 			super();
 		}
 		
-		// TODO make retrieval of a task easy, either by ID or returning a task item. Does GameStateModel control/track what task we are on?
+		// TODO make retrieval of a task easy, either by ID or returning a task item. Does gameState control/track what task we are on?
 		public function get currentTaskId():int
 		{
 			return 0;
@@ -68,6 +72,26 @@ package com.sunlightfoundation.decipherdc.model
 		public function set currentQuizItem(quizItem:QuizItem):void
 		{
 			_currentQuizItem = quizItem;
+		}
+		
+		public function get currentPhase():String
+		{
+			return _gamePhase;
+		}
+		
+		public function set currentPhase(phase:String):void
+		{
+			_gamePhase = phase;
+		}
+		
+		public function get nextPhase():Event
+		{
+			return _nextPhaseEvent;
+		}
+		
+		public function set nextPhase(phaseEvent:Event):void
+		{
+			_nextPhaseEvent = phaseEvent;
 		}
 	}
 }
