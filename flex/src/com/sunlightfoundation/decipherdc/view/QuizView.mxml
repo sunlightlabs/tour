@@ -13,7 +13,7 @@
 			public function buttonClickHandler(event:MouseEvent):void
 			{
 				data.selected = MultilineButton(event.target).label;
-				dispatchEvent(new ViewEvent(ViewEvent.TARGET_CLICK, this, true));
+				dispatchEvent(new ViewEvent(ViewEvent.TARGET_CLICK, this));
 			}
 		]]>
 	</fx:Script>

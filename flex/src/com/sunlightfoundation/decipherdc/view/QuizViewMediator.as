@@ -2,7 +2,6 @@ package com.sunlightfoundation.decipherdc.view
 {
 	import com.sunlightfoundation.decipherdc.events.QuizEvent;
 	import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
-	import com.sunlightfoundation.decipherdc.view.components.MultilineButton;
 	import com.sunlightfoundation.decipherdc.view.effects.QuickFade;
 	import com.sunlightfoundation.decipherdc.view.events.ViewEvent;
 	

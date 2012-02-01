@@ -22,25 +22,17 @@ package com.sunlightfoundation.decipherdc.app
 		
 		override public function onRegister():void
 		{
-			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, handleQuizItemShow, QuizEvent);
-			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, storeQuizItem, QuizEvent);
+//			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, storeQuizItem, QuizEvent);
 			eventMap.mapListener(eventDispatcher, ViewEvent.REMOVE, removeView, ViewEvent);
 		}
 		
-		public function handleQuizItemShow(event:QuizEvent):void
-		{
-			var quizView:QuizView = new QuizView();
-			quizView.data = event.quizItem;
-			view.addElement(quizView);
-		}
-		
-		public function storeQuizItem(event:QuizEvent):void
-		{
-			trace("Store data");
-			var pm:PersistenceManager = new PersistenceManager();
-			pm.load();
-			pm.setProperty('quizItem', event.quizItem);			
-		}
+//		public function storeQuizItem(event:QuizEvent):void
+//		{
+//			trace("Store data");
+//			var pm:PersistenceManager = new PersistenceManager();
+//			pm.load();
+//			pm.setProperty('quizItem', event.quizItem);			
+//		}
 
 		public function removeView(event:ViewEvent):void
 		{
