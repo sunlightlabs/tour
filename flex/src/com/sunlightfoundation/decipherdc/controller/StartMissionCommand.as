@@ -35,7 +35,7 @@ package com.sunlightfoundation.decipherdc.controller
 			locationListModel.selected = location;
 						
 			var editor:Character = gameConfig.editorCharacter;
-			gameState.nextPhase = new GameEvent(GameEvent.GO_TO_SOURCE);
+			gameState.nextPhase = new GameEvent(GameEvent.SELECT_SOURCE);
 			editor.state = gameConfig.editorCharacterState(GameEvent.NEW_MISSION);
 			gameState.currentCharacter = editor;
 			

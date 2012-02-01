@@ -14,10 +14,13 @@ package com.sunlightfoundation.decipherdc.controller.bootstrap
 			commandMap.mapEvent(GameEvent.INTRO_GAME, IntroGameCommand, GameEvent, true);
 			commandMap.mapEvent(GameEvent.NEW_MISSION, StartMissionCommand, GameEvent, false);
 			commandMap.mapEvent(GameEvent.TRIGGER_ACTION, HandleActionClickCommand, GameEvent);
+			commandMap.mapEvent(QuizEvent.SHOW, ShowQuizViewCommand, QuizEvent);
 			commandMap.mapEvent(QuizEvent.ASK_QUESTION, AskQuizQuestionCommand, QuizEvent);
 			commandMap.mapEvent(QuizEvent.ANSWER_SELECTED,  HandleQuizResponseCommand, QuizEvent);
 			commandMap.mapEvent(GameEvent.SHOW_CHARACTER, ShowCharacterCommand, GameEvent);
-			commandMap.mapEvent(GameEvent.GO_TO_SOURCE, GoToSourceCommand, GameEvent);
+//			Show source --> show sourcepicker
+			commandMap.mapEvent(GameEvent.SOURCE_SELECTED, GoToSourceCommand, GameEvent);
+			commandMap.mapEvent(GameEvent.SELECT_SOURCE, ShowSourcePickerCommand, GameEvent);
 			commandMap.mapEvent(QuizEvent.ANSWERED_CORRECTLY, AnsweredCorrectlyCommand, QuizEvent);
 			commandMap.mapEvent(QuizEvent.ANSWERED_INCORRECTLY, AnsweredIncorrectlyCommand, QuizEvent);
 			commandMap.mapEvent(GameEvent.MISSION_WON, StartMissionCommand, GameEvent); // Really there is an intermediary step.

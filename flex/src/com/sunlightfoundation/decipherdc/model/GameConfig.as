@@ -8,11 +8,12 @@ package com.sunlightfoundation.decipherdc.model
 	
 	import flash.utils.Dictionary;
 	
+	import mx.collections.ArrayCollection;
 	import mx.utils.StringUtil;
 	
 	public class GameConfig extends Object implements IGameConfig
 	{	
-		protected var _sourceCharacters:Vector.<Character>;
+		protected var _sourceCharacters:ArrayCollection;
 		protected var _sourceCharacterStates:Dictionary;
 		protected var _loaded:Boolean;
 		
@@ -36,7 +37,7 @@ package com.sunlightfoundation.decipherdc.model
 			return _loaded;
 		}
 		
-		public function get sourceCharacters():Vector.<Character>
+		public function get sourceCharacters():ArrayCollection
 		{
 			return _sourceCharacters;
 		}
@@ -113,9 +114,9 @@ package com.sunlightfoundation.decipherdc.model
 			return states;
 		}
 		
-		private function generateSourceCharacters():Vector.<Character>
+		private function generateSourceCharacters():ArrayCollection
 		{
-			var chars:Vector.<Character> = new Vector.<Character>();
+			var chars:Array = new Array();
 			
 
 			chars.push(new Character("Sally Source", "img/fakeImg.png"));
@@ -123,7 +124,7 @@ package com.sunlightfoundation.decipherdc.model
 			chars.push(new Character("Sausage Biskit", "img/fakeImg.png"));
 			chars.push(new Character("Little Timmy", "img/fakeImg.png"));
 			
-			return chars;
+			return new ArrayCollection(chars);
 		}
 	}
 }

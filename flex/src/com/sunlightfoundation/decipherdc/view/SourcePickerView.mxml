@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		left="0" top="0" right="0" bottom="0"
+		>
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.sunlightfoundation.decipherdc.view.events.ViewEvent;
+			
+			private var _selected:String = null;
+			
+			public function buttonClickHandler(event:MouseEvent):void
+			{
+				trace("Button click");
+				_selected = event.target.label;
+				dispatchEvent(new ViewEvent(ViewEvent.TARGET_CLICK, this));
+			}
+			
+			public function get selected():String{
+				return _selected;
+			}
+		]]>
+	</fx:Script>
+	<s:VGroup left="10" right="10" top="85" bottom="0" gap="10" >
+		<s:Button click="buttonClickHandler(event)" label="{data.getItemAt(0).name}" />
+		<s:Button click="buttonClickHandler(event)" label="{data.getItemAt(1).name}" />
+		<s:Button click="buttonClickHandler(event)" label="{data.getItemAt(2).name}" />
+		<s:Button click="buttonClickHandler(event)" label="{data.getItemAt(3).name}" />
+	</s:VGroup>
+</s:View>

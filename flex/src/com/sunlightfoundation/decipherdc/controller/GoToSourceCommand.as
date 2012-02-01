@@ -6,6 +6,8 @@ package com.sunlightfoundation.decipherdc.controller
 	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.model.vo.Character;
 	
+	import mx.collections.ArrayCollection;
+	
 	import org.robotlegs.mvcs.Command;
 	
 	public class GoToSourceCommand extends Command
@@ -16,15 +18,39 @@ package com.sunlightfoundation.decipherdc.controller
 		[Inject]
 		public var gameState:IGameState;
 		
+		[Inject]
+		public var event:GameEvent;
+		
+		private var _sourceCharacter:Character;
+		
 		override public function execute():void
 		{
 			trace("GoToSourceCommand");
 //			Should load a source picker menu, but for now we go to a random source
-			var sources:Vector.<Character> = gameConfig.sourceCharacters;
 			
 			gameState.nextPhase = new QuizEvent(QuizEvent.ASK_QUESTION);
-			sources[0].state = gameConfig.sourceCharacterState(gameState.nextPhase.type);
-			gameState.currentCharacter = sources[0];
+			
+			if (event.kwargs.hasOwnProperty('sourceName'))
+			{
+				var selectedName:String = event.kwargs['sourceName'];
+				trace(selectedName);
+				for (var n:int = 0, len:int = gameConfig.sourceCharacters.length; n < len; n++) 
+				{
+					if (gameConfig.sourceCharacters[n].name === selectedName) 
+					{
+						_sourceCharacter = gameConfig.sourceCharacters[n];
+						break;
+					}
+				}
+				
+			}
+			else{
+				_sourceCharacter = gameConfig.sourceCharacters[0];
+			}
+			_sourceCharacter.state = gameConfig.sourceCharacterState(gameState.nextPhase.type);
+			
+			
+			gameState.currentCharacter = _sourceCharacter;
 			
 			dispatch(new GameEvent(GameEvent.SHOW_CHARACTER));
 		}
