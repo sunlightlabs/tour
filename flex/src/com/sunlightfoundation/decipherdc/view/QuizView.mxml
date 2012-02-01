@@ -6,19 +6,14 @@
 					 >
 	<fx:Script>
 		<![CDATA[
-			import com.sunlightfoundation.decipherdc.events.QuizEvent;
-			import com.sunlightfoundation.decipherdc.model.vo.QuizItem;
 			import com.sunlightfoundation.decipherdc.view.events.ViewEvent;
-			
-			import mx.events.FlexEvent;
 			
 			public var selected:String;
 			
 			public function buttonClickHandler(event:MouseEvent):void
 			{
 				data.selected = MultilineButton(event.target).label;
-				dispatchEvent(new QuizEvent( QuizEvent.ANSWER_SELECTED, QuizItem(data) ));
-				dispatchEvent(new ViewEvent(ViewEvent.REMOVE, this, true));
+				dispatchEvent(new ViewEvent(ViewEvent.TARGET_CLICK, this, true));
 			}
 		]]>
 	</fx:Script>

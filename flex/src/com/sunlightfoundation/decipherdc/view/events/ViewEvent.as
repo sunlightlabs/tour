@@ -10,6 +10,7 @@ package com.sunlightfoundation.decipherdc.view.events
 	{
 		public static const REMOVE:String = "ViewEvent.remove";
 		public static const SHOW:String = "ViewEvent.show";
+		public static const TARGET_CLICK:String = "ViewEvent.targetClick";
 		
 		private var _view:UIComponent;
 		private var _transition:Boolean;
