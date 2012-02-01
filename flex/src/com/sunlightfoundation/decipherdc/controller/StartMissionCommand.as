@@ -1,7 +1,6 @@
 package com.sunlightfoundation.decipherdc.controller
 {
 	import com.sunlightfoundation.decipherdc.events.GameEvent;
-	import com.sunlightfoundation.decipherdc.model.GameState;
 	import com.sunlightfoundation.decipherdc.model.IGameConfig;
 	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.model.LocationListModel;
@@ -28,8 +27,8 @@ package com.sunlightfoundation.decipherdc.controller
 		{
 			// Generate mission based on randomized list of locations
 			trace("StartMissionCommand run");
-						
-			var location:Location = gameState.taskSequence[0];
+			trace("Number of tasks: " + gameState.taskSequence.length);
+			var location:Location = gameState.currentTask;
 			
 			trace(location.name);
 			locationListModel.selected = location;

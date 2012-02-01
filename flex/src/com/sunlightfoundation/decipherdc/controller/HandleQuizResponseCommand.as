@@ -31,7 +31,6 @@ package com.sunlightfoundation.decipherdc.controller
 				gameState.nextPhase = new QuizEvent(QuizEvent.ANSWERED_CORRECTLY);
 				gameState.currentCharacter.state = gameConfig.sourceCharacterState(QuizEvent.ANSWERED_CORRECTLY);
 				CharacterView(gameState.currentView).data = gameState.currentCharacter
-//				dispatch(new QuizEvent(QuizEvent.CORRECT));
 			}
 			else
 			{
@@ -39,8 +38,8 @@ package com.sunlightfoundation.decipherdc.controller
 				gameState.nextPhase = new QuizEvent(QuizEvent.ANSWERED_INCORRECTLY);
 				gameState.currentCharacter.state = gameConfig.sourceCharacterState(QuizEvent.ANSWERED_INCORRECTLY);
 				CharacterView(gameState.currentView).data = gameState.currentCharacter
-//				dispatch(new QuizEvent(QuizEvent.INCORRECT));
 			}
+			gameState.advanceTask();
 		}
 	}
 }

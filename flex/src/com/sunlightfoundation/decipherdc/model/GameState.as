@@ -25,14 +25,14 @@ package com.sunlightfoundation.decipherdc.model
 		}
 		
 		// TODO make retrieval of a task easy, either by ID or returning a task item. Does gameState control/track what task we are on?
-		public function get currentTaskId():int
-		{
-			return 0;
-		}
-		
-		public function set currentTaskId(value:int):void
-		{
-		}
+//		public function get currentTaskId():int
+//		{
+//			return 0;
+//		}
+//		
+//		public function set currentTaskId(value:int):void
+//		{
+//		}
 		
 		public function get taskSequence():Vector.<Location>
 		{
@@ -42,6 +42,16 @@ package com.sunlightfoundation.decipherdc.model
 		public function set taskSequence(value:Vector.<Location>):void
 		{
 			_taskSequence = value;
+		}
+		
+		public function get currentTask():Location
+		{
+			return _taskSequence[0];
+		}
+		
+		public function advanceTask():void
+		{
+			_taskSequence.shift();
 		}
 		
 		public function get currentView():UIComponent

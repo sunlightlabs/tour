@@ -11,8 +11,12 @@ package com.sunlightfoundation.decipherdc.model
 
 	public interface IGameState
 	{
-		function get currentTaskId():int;
-		function set currentTaskId(value:int):void;
+//		function get currentTaskId():int;
+//		function set currentTaskId(value:int):void;
+		
+		function advanceTask():void;
+		
+		function get currentTask():Location;
 		
 		function get taskSequence():Vector.<Location>;
 		function set taskSequence(value:Vector.<Location>):void;
