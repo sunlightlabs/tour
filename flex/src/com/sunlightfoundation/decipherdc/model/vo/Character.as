@@ -1,6 +1,8 @@
 package com.sunlightfoundation.decipherdc.model.vo
 {
 	import flash.utils.Dictionary;
+	
+	import mx.utils.StringUtil;
 
 	[Bindable]
 	public class Character
@@ -46,6 +48,11 @@ package com.sunlightfoundation.decipherdc.model.vo
 			_dialogue = characterState.dialogue;
 			_actionText = characterState.actionText;
 			
+		}
+		
+		public function updateDialogue(... rest):void
+		{
+			_dialogue = StringUtil.substitute(_dialogue, rest);
 		}
 				
 	}

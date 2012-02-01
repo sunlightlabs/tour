@@ -26,14 +26,12 @@ package com.sunlightfoundation.decipherdc.controller
 		override public function execute():void
 		{
 			trace("GoToSourceCommand");
-//			Should load a source picker menu, but for now we go to a random source
-			
+
 			gameState.nextPhase = new QuizEvent(QuizEvent.ASK_QUESTION);
 			
 			if (event.kwargs.hasOwnProperty('sourceName'))
 			{
 				var selectedName:String = event.kwargs['sourceName'];
-				trace(selectedName);
 				for (var n:int = 0, len:int = gameConfig.sourceCharacters.length; n < len; n++) 
 				{
 					if (gameConfig.sourceCharacters[n].name === selectedName) 

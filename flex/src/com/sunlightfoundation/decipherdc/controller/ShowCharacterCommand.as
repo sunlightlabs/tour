@@ -9,6 +9,8 @@ package com.sunlightfoundation.decipherdc.controller
 	
 	import spark.components.Application;
 	
+	import mx.utils.StringUtil;
+	
 	public class ShowCharacterCommand extends Command
 	{
 		
@@ -32,6 +34,7 @@ package com.sunlightfoundation.decipherdc.controller
 				gameState.currentView = new CharacterView();
 			}
 			var currentView:CharacterView = CharacterView(gameState.currentView);
+			gameState.currentCharacter.updateDialogue(gameState.currentTask.category, gameState.currentTask.name ? gameState.currentTask.name : "Stuff");
 			currentView.data = gameState.currentCharacter;
 			Application(contextView).addElement(currentView);
 		}

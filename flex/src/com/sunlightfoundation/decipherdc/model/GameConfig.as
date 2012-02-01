@@ -72,7 +72,7 @@ package com.sunlightfoundation.decipherdc.model
 				'Go on'
 			);
 			editorStates[GameEvent.NEW_MISSION] = new CharacterState(
-				"I need you to uncover something about something! Go talk to one of my sources and see what you can dig up.",
+				"We are investigating {0}. I think {1} may be spending gobs of money, but I need you to find out! Here's my list of sources. Go pump them for information!",
 				"Chase down a source"
 			);			
 			editorStates[GameEvent.MISSION_FAILED] = new CharacterState(
