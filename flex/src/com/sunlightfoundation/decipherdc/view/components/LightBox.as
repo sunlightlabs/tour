@@ -27,7 +27,8 @@ package com.sunlightfoundation.decipherdc.view.components
 	public class LightBox extends SkinnableContainer implements IDataRenderer
 	{
 		private var _data:Object;
-		private var fadeIn:QuickFade;
+		private var _fadeIn:QuickFade;
+		private var _fadeOut:QuickFade;
 		
 		public function LightBox()
 		{
@@ -35,11 +36,18 @@ package com.sunlightfoundation.decipherdc.view.components
 			setStyle("skinClass", LightBoxSkin);
 
 			visible = false;
-			fadeIn = new QuickFade();
-			fadeIn.alphaFrom = 0.0;
-			fadeIn.alphaTo = 1.0;
-			fadeIn.target = this;
-			setStyle("creationCompleteEffect", fadeIn);
+			_fadeIn = new QuickFade();
+			_fadeIn.alphaFrom = 0.0;
+			_fadeIn.alphaTo = 1.0;
+			_fadeIn.target = this;
+			setStyle("addedEffect", _fadeIn);
+		
+			_fadeOut = new QuickFade();
+			_fadeOut.alphaFrom = this.alpha;
+			_fadeOut.alphaTo = 0.0;
+			
+			setStyle("removedEffect", _fadeOut);
+
 		}
 		
 		[Bindable("dataChange")]

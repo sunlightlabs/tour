@@ -6,7 +6,8 @@
 
 
 s|Application, s|View {
-	backgroundColor: #efe1d6;
+	backgroundColor: #a5a4a2;
+	color: #FEFEFE;
 }
 
 s|TextArea {
@@ -25,7 +26,7 @@ s|Scroller {
 }
 
 s|Button {
-	chromeColor: #A5A4A2;
+	chromeColor: #B42327;
 }
 
 
@@ -34,11 +35,12 @@ comp|MultilineButton {
 }
 
 comp|LightBox {
-	chromeColor: #efe1d6;
+	chromeColor: #a5a4a2;
 }
 
 global
 {
 	content-background-alpha: 1.0;
 	chromeColor: #efe1d6;
+	color: #FFFFFF;
 }

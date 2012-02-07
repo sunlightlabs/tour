@@ -2,17 +2,28 @@ package com.sunlightfoundation.decipherdc.view.skins
 {
 	import flash.text.TextFieldAutoSize;
 	
+	import flashx.textLayout.formats.LineBreak;
+	
+	import mx.events.FlexEvent;
+	
+	import spark.components.supportClasses.StyleableTextField;
 	import spark.skins.mobile.ButtonSkin;
 	
+	import assets.fxg.DecipherButton_up;
+
 	public class MultilineButtonSkin extends ButtonSkin
 	{
-		import flashx.textLayout.formats.LineBreak;
-		import spark.components.supportClasses.StyleableTextField;
-		import mx.events.FlexEvent;
+		
+		
+		internal var fillColorStyleName:String = "chromeColor";
+
 		
 		public function MultilineButtonSkin()
 		{
 			super();
+			layoutCornerEllipseSize = 0;
+			upBorderSkin = DecipherButton_up;
+			downBorderSkin = DecipherButton_up;
 		}
 		
 		override protected function createChildren():void
@@ -72,13 +83,18 @@ package com.sunlightfoundation.decipherdc.view.skins
 		
 		override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
 		{
-			super.drawBackground(unscaledWidth, unscaledHeight);
-//			var chromeColor:uint = getStyle("chromeColor");
-//			graphics.beginFill(chromeColor);
-//			graphics.drawRoundRect(layoutBorderSize, layoutBorderSize, unscaledWidth - (layoutBorderSize * 2), 
-//				unscaledHeight - (layoutBorderSize * 2),
-//				layoutCornerEllipseSize, layoutCornerEllipseSize);
-//			graphics.endFill();
+//			super.drawBackground(unscaledWidth, unscaledHeight);
+			
+			var chromeColor:uint = getStyle(fillColorStyleName);
+			
+			graphics.beginFill(chromeColor);
+
+			// inset chrome color by BORDER_SIZE
+			// bottom line is a shadow
+			graphics.drawRect(layoutBorderSize, layoutBorderSize, 
+				unscaledWidth - (layoutBorderSize * 2), 
+				unscaledHeight - (layoutBorderSize * 2));
+			graphics.endFill();
 		}
 
 	}
