@@ -6,6 +6,7 @@ package com.sunlightfoundation.decipherdc.controller
 	import org.robotlegs.mvcs.Command;
 	
 	import spark.components.Application;
+	import spark.components.ViewNavigatorApplication;
 	
 	public class ShowQuizViewCommand extends Command
 	{
@@ -17,7 +18,7 @@ package com.sunlightfoundation.decipherdc.controller
 		{
 			var quizView:QuizView = new QuizView();
 			quizView.data = event.quizItem;
-			Application(contextView).addElement(quizView);
+			ViewNavigatorApplication(contextView).navigator.activeView.addElement(quizView);
 		}
 	}
 }

@@ -50,7 +50,7 @@ package com.sunlightfoundation.decipherdc.controller
 			
 			gameState.currentCharacter = _sourceCharacter;
 			
-			dispatch(new GameEvent(GameEvent.SHOW_CHARACTER));
+			dispatch(new GameEvent(GameEvent.SHOW_CHARACTER, {'new': true}));
 		}
 	}
 }

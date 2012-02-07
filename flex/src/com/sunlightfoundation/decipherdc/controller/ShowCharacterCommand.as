@@ -5,11 +5,13 @@ package com.sunlightfoundation.decipherdc.controller
 	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.view.CharacterView;
 	
+	import mx.utils.StringUtil;
+	
 	import org.robotlegs.mvcs.Command;
 	
 	import spark.components.Application;
-	
-	import mx.utils.StringUtil;
+	import spark.components.ViewNavigator;
+	import spark.components.ViewNavigatorApplication;
 	
 	public class ShowCharacterCommand extends Command
 	{
@@ -24,19 +26,27 @@ package com.sunlightfoundation.decipherdc.controller
 		{
 			trace("ShowCharacterCommand");
 			
+			var navigator:ViewNavigator = ViewNavigatorApplication(contextView).navigator;
+			
 			if (event.kwargs.hasOwnProperty('new') && event.kwargs['new'] === true)
 			{
-				if (gameState.currentView) Application(contextView).removeElement(gameState.currentView);
-				gameState.currentView = new CharacterView();
+//				if (gameState.currentView) Application(contextView).navigator.popView(gameState.currentView);
+//				gameState.currentView = new CharacterView();
+				if (navigator.activeView !== null) {
+					navigator.replaceView(CharacterView, gameState.currentCharacter);
+				}
+				else{
+					navigator.pushView(CharacterView, gameState.currentCharacter);
+				}
 			}
-			else if (gameState.currentView === null )
+			else
 			{
-				gameState.currentView = new CharacterView();
+				gameState.currentCharacter.updateDialogue(gameState.currentTask.category, gameState.currentTask.name ? gameState.currentTask.name : "Stuff");
+//				currentView.data
+				navigator.activeView.data = gameState.currentCharacter;
 			}
-			var currentView:CharacterView = CharacterView(gameState.currentView);
-			gameState.currentCharacter.updateDialogue(gameState.currentTask.category, gameState.currentTask.name ? gameState.currentTask.name : "Stuff");
-			currentView.data = gameState.currentCharacter;
-			Application(contextView).addElement(currentView);
+//			var currentView:CharacterView = CharacterView(gameState.currentView);
+//			currentView.data = gameState.currentCharacter;
 		}
 	}
 }

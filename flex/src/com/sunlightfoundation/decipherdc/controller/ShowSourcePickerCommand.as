@@ -12,6 +12,7 @@ package com.sunlightfoundation.decipherdc.controller
 	import org.robotlegs.mvcs.Command;
 	
 	import spark.components.Application;
+	import spark.components.ViewNavigatorApplication;
 	
 	public class ShowSourcePickerCommand extends Command
 	{
@@ -26,9 +27,10 @@ package com.sunlightfoundation.decipherdc.controller
 			trace("ShowSourcePickerCommand");
 			gameState.nextPhase = new GameEvent(GameEvent.SHOW_CHARACTER);
 
-			var sourcePickerView:SourcePickerView = new SourcePickerView();
-			sourcePickerView.data = gameConfig.sourceCharacters;
-			Application(contextView).addElement(sourcePickerView);
+//			var sourcePickerView:SourcePickerView = new SourcePickerView();
+//			sourcePickerView.data = gameConfig.sourceCharacters;
+//			Application(contextView).addElement(sourcePickerView);
+			ViewNavigatorApplication(contextView).navigator.replaceView(SourcePickerView, gameConfig.sourceCharacters);
 		}
 	}
 }

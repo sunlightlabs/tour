@@ -15,11 +15,11 @@ package com.sunlightfoundation.decipherdc.view
 		{
 			eventMap.mapListener(sourcePickerView, ViewEvent.TARGET_CLICK, onButtonClick);
 			
-			var fadeOut:QuickFade = new QuickFade();
-			fadeOut.alphaFrom = sourcePickerView.alpha;
-			fadeOut.alphaTo = 0.0;
+//			var fadeOut:QuickFade = new QuickFade();
+//			fadeOut.alphaFrom = sourcePickerView.alpha;
+//			fadeOut.alphaTo = 0.0;
 
-			sourcePickerView.setStyle("removedEffect", fadeOut);
+//			sourcePickerView.setStyle("removedEffect", fadeOut);
 		}
 		
 		private function onButtonClick(event:ViewEvent):void

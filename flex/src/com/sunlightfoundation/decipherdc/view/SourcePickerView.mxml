@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<components:ChromelessView xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:components="com.sunlightfoundation.decipherdc.view.components.*"
 		xmlns:s="library://ns.adobe.com/flex/spark"
 		left="0" top="0" right="0" bottom="0"
 		>
-	<s:layout>
+	<components:layout>
 		<s:BasicLayout/>
-	</s:layout>
+	</components:layout>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
@@ -33,4 +34,4 @@
 		<s:Button click="buttonClickHandler(event)" label="{data.getItemAt(2).name}" />
 		<s:Button click="buttonClickHandler(event)" label="{data.getItemAt(3).name}" />
 	</s:VGroup>
-</s:View>
+</components:ChromelessView>

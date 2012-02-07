@@ -1,6 +1,5 @@
 package com.sunlightfoundation.decipherdc.app
 {
-	import com.google.maps.Alpha;
 	import com.sunlightfoundation.decipherdc.events.QuizEvent;
 	import com.sunlightfoundation.decipherdc.model.IGameState;
 	import com.sunlightfoundation.decipherdc.model.events.*;
@@ -13,7 +12,10 @@ package com.sunlightfoundation.decipherdc.app
 	import org.robotlegs.mvcs.Mediator;
 	
 	import spark.components.Application;
+	import spark.components.ViewNavigator;
+	import spark.components.ViewNavigatorApplication;
 	import spark.managers.PersistenceManager;
+	import spark.transitions.CrossFadeViewTransition;
 	
 	public class ApplicationMediator extends Mediator
 	{
@@ -22,8 +24,11 @@ package com.sunlightfoundation.decipherdc.app
 		
 		override public function onRegister():void
 		{
-//			eventMap.mapListener(eventDispatcher, QuizEvent.SHOW, storeQuizItem, QuizEvent);
 			eventMap.mapListener(eventDispatcher, ViewEvent.REMOVE, removeView, ViewEvent);
+			
+//			var fadeTrans:CrossFadeViewTransition = new CrossFadeViewTransition();
+//			view.navigator.defaultPushTransition = fadeTrans;
+//			view.navigator.defaultPopTransition = fadeTrans;
 		}
 		
 //		public function storeQuizItem(event:QuizEvent):void
@@ -36,8 +41,10 @@ package com.sunlightfoundation.decipherdc.app
 
 		public function removeView(event:ViewEvent):void
 		{
-			view.removeElement(event.view);
-
+			var navigator:ViewNavigator = ViewNavigatorApplication(view).navigator;
+//			view.navigator.popView();
+			
+			navigator.activeView.removeElement(event.view);
 //			trace("removeView and something: " + gameState.currentTaskId);
 			
 		}

@@ -12,6 +12,9 @@ package com.sunlightfoundation.decipherdc.controller
 	
 	import org.robotlegs.mvcs.Command;
 	
+	import spark.components.ViewNavigator;
+	import spark.components.ViewNavigatorApplication;
+	
 	public class HandleQuizResponseCommand extends Command
 	{
 		[Inject]
@@ -26,18 +29,21 @@ package com.sunlightfoundation.decipherdc.controller
 		override public function execute():void
 		{
 			trace("HandleQuizResponseCommand run");
+			var navigator:ViewNavigator = ViewNavigatorApplication(contextView).navigator;
 			if(event.quizItem.selected === event.quizItem.answer)
 			{
 				gameState.nextPhase = new QuizEvent(QuizEvent.ANSWERED_CORRECTLY);
 				gameState.currentCharacter.state = gameConfig.sourceCharacterState(QuizEvent.ANSWERED_CORRECTLY);
-				CharacterView(gameState.currentView).data = gameState.currentCharacter
+				navigator.activeView.data = gameState.currentCharacter;
+//				CharacterView(gameState.currentView).data = gameState.currentCharacter
 			}
 			else
 			{
 
 				gameState.nextPhase = new QuizEvent(QuizEvent.ANSWERED_INCORRECTLY);
 				gameState.currentCharacter.state = gameConfig.sourceCharacterState(QuizEvent.ANSWERED_INCORRECTLY);
-				CharacterView(gameState.currentView).data = gameState.currentCharacter
+				navigator.activeView.data = gameState.currentCharacter;
+//				CharacterView(gameState.currentView).data = gameState.currentCharacter
 			}
 			gameState.advanceTask();
 		}
